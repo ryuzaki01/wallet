@@ -1,0 +1,42 @@
+define(["jquery", "kendo", "app/data"], function ($, kendo, data) {
+  var shortName = 'DompetIbu';
+  var version = '1.0';
+  var displayName = 'Dompet Ibu';
+  var maxSize = 65535;
+
+  return {
+    init: function () {
+      console.log("DATABASE: loading database..");
+
+      if (!window.openDatabase) {
+        console.log('Databases are not supported in this browser.');
+        return;
+      }
+
+      db = openDatabase(shortName, version, displayName, maxSize);
+
+      db.transaction(function (tx) {
+          //tx.executeSql( 'DROP TABLE IF EXISTS income',[],DBHandler.nullHandler,DBHandler.errorHandler);
+          //tx.executeSql( 'DROP TABLE IF EXISTS outcome',[],DBHandler.nullHandler,DBHandler.errorHandler);
+          //tx.executeSql( 'DROP TABLE IF EXISTS target',[],DBHandler.nullHandler,DBHandler.errorHandler);
+          tx.executeSql('CREATE TABLE IF NOT EXISTS income(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, category TEXT, date DATE, time TIME, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
+          tx.executeSql('CREATE TABLE IF NOT EXISTS outcome(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, category TEXT, date DATE, time TIME, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
+          tx.executeSql('CREATE TABLE IF NOT EXISTS target(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, month INTEGER, date DATE, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
+        },
+        DBHandler.errorHandler, function () {
+          //app.onDeviceReady();
+          App.init();
+        });
+    },
+    errorHandler: function (transaction, error) {
+      if (error) {
+        console.log('Error: ' + error.message + ' code: ' + error.code);
+      }
+    },
+    nullHandler: function (tx) {
+      //return console.log('null handled ');
+    }
+
+  }
+
+});
