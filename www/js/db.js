@@ -1,4 +1,4 @@
-define(["jquery", "kendo", "app/data"], function ($, kendo, data) {
+define(["jquery", "kendo", "data"], function ($, kendo, data) {
   var shortName = 'DompetIbu';
   var version = '1.0';
   var displayName = 'Dompet Ibu';
@@ -16,12 +16,10 @@ define(["jquery", "kendo", "app/data"], function ($, kendo, data) {
       db = openDatabase(shortName, version, displayName, maxSize);
 
       db.transaction(function (tx) {
-          //tx.executeSql( 'DROP TABLE IF EXISTS income',[],DBHandler.nullHandler,DBHandler.errorHandler);
-          //tx.executeSql( 'DROP TABLE IF EXISTS outcome',[],DBHandler.nullHandler,DBHandler.errorHandler);
+          //tx.executeSql( 'DROP TABLE IF EXISTS expense',[],DBHandler.nullHandler,DBHandler.errorHandler);
           //tx.executeSql( 'DROP TABLE IF EXISTS target',[],DBHandler.nullHandler,DBHandler.errorHandler);
-          tx.executeSql('CREATE TABLE IF NOT EXISTS income(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, category TEXT, date DATE, time TIME, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
-          tx.executeSql('CREATE TABLE IF NOT EXISTS outcome(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, category TEXT, date DATE, time TIME, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
-          tx.executeSql('CREATE TABLE IF NOT EXISTS target(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, month INTEGER, date DATE, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
+          tx.executeSql('CREATE TABLE IF NOT EXISTS expense(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, type TEXT, category TEXT, date DATE default CURRENT_DATE, time TIME default CURRENT_TIME, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
+          tx.executeSql('CREATE TABLE IF NOT EXISTS target(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, month INTEGER, date DATE default CURRENT_DATE, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
         },
         DBHandler.errorHandler, function () {
           //app.onDeviceReady();

@@ -1,63 +1,188 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta name="msapplication-tap-highlight" content="no" />
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"/>
+  <meta name="msapplication-tap-highlight" content="no"/>
 
-    <link href="css/kendo.common-material.min.css" rel="stylesheet" />
-    <link href="css/kendo.material.mobile.min.css" rel="stylesheet" />
-    <link href="css/kendo.mobile.material.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/kendo.common.min.css"/>
+  <link rel="stylesheet" href="css/kendo.default.min.css"/>
+  <link rel="stylesheet" href="css/kendo.mobile.all.min.css"/>
 
-    <link href="css/index.css" rel="stylesheet" />
+  <link href="css/index.css" rel="stylesheet"/>
 </head>
 <body id="body">
+  <div data-role="view" data-title="Home" id="index" data-layout="drawer-layout" data-show="App.views.index.show"
+       data-init="App.views.index.init" data-hide="App.views.index.hide">
 
-    <div data-role="view" data-title="Dompet" id="index" data-layout="" data-show="App.views.index.show" data-init="App.view.index.init" data-use-native-scrolling="true">
-        <header data-role="header">
-            <div data-role="navbar" id="normal" class="km-accent">
-                <span data-role="view-title"></span>
-                <span class="km-view-subtitle">Mobile Demos and Sample Applications</span>
-            </div>
-        </header>
+    <table style="width: 100%; border-bottom: 1px solid #ddd">
+      <tr>
+        <td class="text-left"><a data-role="button" data-click="App.prevDay"><</a></td>
+        <td id="home-day" class="text-center">Today</td>
+        <td class="text-right"><a data-role="button" data-click="App.nextDay">></a></td>
+      </tr>
+    </table>
 
-        <ul data-role="listview" class="main-menu">
-            <li><a data-role="listview-link" href="#pemasukan">Pemasukan</a></li>
-            <li><a data-role="listview-link" href="#pengeluaran">Pengeluaran</a></li>
-            <li><a data-role="listview-link" href="#target">Target</a></li>
-            <li><a data-role="listview-link" href="#kalender">Kalender</a></li>
+    <ul data-role="listview" class="section">
+      <li><b>Pemasukan</b><span id="home-income" class="right green">Rp 0</span></li>
+      <li><b>Pengeluaran</b><span id="home-expense" class="right red">Rp 0</span></li>
+      <li><span class="right">______________</span></li>
+      <li><b><span id="home-total" class="right">Rp 0</span></b></li>
+    </ul>
+
+    <ul data-role="listview" style="margin-bottom: 150px;" data-style="inset">
+      <li>
+        <ul data-role="buttongroup" data-index="0" data-select="App.views.index.changeList" data-style="inset">
+          <li>Pemasukan</li>
+          <li>Pengeluaran</li>
         </ul>
-    </div>
+      </li>
+      <li style="padding: 0;">
+        <ul data-role="listview" id="history-list" data-style="inset" data-template="history-item-template" class="history-list">
 
-    <div data-role="view" data-title="Pemasukan" id="pemasukan" data-layout="drawer-layout" data-init="App.views.pemasukan.init" data-show="App.views.pemasukan.show">
-
-    </div>
-
-    <div data-role="drawer" id="drawer" style="width: 20em" data-views="['index', 'pemasukan']" data-use-native-scrolling="true">
-        <header data-role="header">
-            <div data-role="navbar">
-                <a data-align="left" data-role="button" class="nav-button" data-icon="contacts"></a>
-                <span data-role="view-title">Menu</span>
-                <a data-align="right" data-role="button" class="nav-button" data-icon="settings"></a>
-            </div>
-        </header>
-        <ul data-role="listview" class="km-listview-icons">
-            <li data-icon="reply"><a href="#index" data-transition="none">Home</a></li>
-            <li data-icon="trash"><a href="#pemasukan" data-transition="none">Pemasukan</a></li>
-            <li data-icon="organize"><a href="#pengeluaran" data-transition="none">Pengeluaran</a></li>
-            <li data-icon="organize"><a href="#target" data-transition="none">Target</a></li>
-            <li data-icon="organize"><a href="#kalender" data-transition="none">Kalender</a></li>
         </ul>
-    </div>
+      </li>
+    </ul>
 
-    <div data-role="layout" data-id="drawer-layout" data-show="App.showDrawer">
-        <header data-role="header">
-            <div data-role="navbar">
-                <a data-role="button" data-rel="drawer" href="#drawer" data-icon="hamburger" data-align="left"></a>
-                <span data-role="view-title"></span>
-            </div>
-        </header>
-    </div>
+    <script type="text/x-kendo-template" id="history-item-template">
+      <table>
+        <tr>
+          <td>#: name #</td>
+          <td class="money">Rp #: amount #</td>
+        </tr>
+      </table>
+    </script>
+  </div>
 
-    <script type="text/javascript" src="js/libs/require.js" data-main="js/main"></script>
+  <div class="fixed-action-btn active" id="action-add">
+    <a class="btn-floating btn-large" href="#tambah">
+      <span class="km-icon km-add km-notext" style="display: inline-block;"></span>
+    </a>
+  </div>
+
+  <div data-role="view" data-title="Buat Baru" id="tambah" data-layout="" data-init="App.views.tambah.init"
+       data-show="App.views.tambah.show" data-hide="App.views.tambah.hide">
+    <header data-role="header">
+      <div data-role="navbar">
+        <a data-role="backbutton" data-align="left"></a>
+        <span data-role="view-title"></span>
+      </div>
+    </header>
+
+    <div data-role="content">
+      <form id="form-new-entry">
+        <ul data-role="listview">
+          <li>
+            <ul data-role="listview" data-style="inset">
+              <li>
+                <label class="km-required km-label-above">Nama
+                  <input name="name" value="" type="text"/>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <span id="expensetype">Pemasukan</span>
+                  <input name="type" type="hidden" value="off">
+                  <input name="type" type="checkbox" data-role="switch" />
+                </label>
+              </li>
+              <li>
+                <label class="km-required km-label-above">Jumlah
+                  <input name="amount" type="number" value=""/>
+                </label>
+              </li>
+              <li>
+                <label class="km-icon-label k-i-briefcase">
+                  <select name="category">
+                    <option value="">- Pilih Kategori -</option>
+                    <option class="cat-expense">Belanja</option>
+                    <option class="cat-expense">Cicilan</option>
+                    <option class="cat-expense">Ongkos</option>
+                    <option class="cat-income">Gaji</option>
+                    <option class="cat-income">Penghasilan Sampingan</option>
+                    <option class="cat-income">Bonus</option>
+                    <option class="cat-income">Hadiah</option>
+                    <option>Lainnya</option>
+                  </select>
+                </label>
+              </li>
+              <li>
+                <label class="km-icon-label k-i-calendar km-required">
+                  <input name="date" type="date" placeholder="Tentukan Tanggal"/>
+                </label>
+              </li>
+              <li>
+                <label class="km-icon-label k-i-clock km-required">
+                  <input name="time" type="time" placeholder="Tentukan Jam"/>
+                </label>
+              </li>
+              <li>
+                <fieldset>
+                  <legend>Catatan</legend>
+                  <textarea name="note" style="height: 100px;" placeholder="Tulis catatan anda.."></textarea>
+                </fieldset>
+              </li>
+              <li>
+                <fieldset>
+                  <legend></legend>
+                  <a data-role="button" data-animated="true" class="km-primary km-justified"
+                     data-click="App.views.tambah.save">Simpan</a>
+                </fieldset>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+
+  <div data-role="view" data-title="Target" id="target" data-layout="drawer-layout" data-init="App.views.tambah.init"
+       data-show="App.views.tambah.show">
+      <form id="target-form">
+        <ul data-role="listview">
+          <li>
+            <label class="km-required km-label-above">Nama
+              <input name="name" value="" type="text"/>
+            </label>
+          </li>
+        </ul>
+      </form>
+
+      <h3>List Target</h3>
+      <ul></ul>
+  </div>
+
+  <div data-role="view" data-title="Kalender" id="kalender" data-layout="drawer-layout"
+       data-init="App.views.kalender.init" data-show="App.views.kalender.show" data-stretch="true">
+    <div id="scheduler"></div>
+  </div>
+
+  <div data-role="drawer" id="drawer" data-title="Dompet Ibu" style="width: 20em;"
+       data-views="['index', 'add', 'target', 'kalender']" data-use-native-scrolling="true">
+    <header data-role="header">
+      <div data-role="navbar">
+        <span data-role="view-title"></span>
+        <span class="km-view-subtitle">Asisten Rumah Tangga Anda</span>
+      </div>
+    </header>
+    <div data-role="content">
+      <ul data-role="listview" class="km-listview-icons">
+        <li data-icon="home"><a href="#index" data-transition="none">Home</a></li>
+        <li data-icon="action"><a href="#target" data-transition="none">Target</a></li>
+        <li data-icon="recents"><a href="#kalender" data-transition="none">Kalender</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="layout" data-id="drawer-layout" data-show="App.showDrawer">
+    <header data-role="header">
+      <div data-role="navbar">
+        <a data-role="button" data-rel="drawer" href="#drawer" data-icon="hamburger" data-align="left"></a>
+        <span data-role="view-title"></span>
+      </div>
+    </header>
+  </div>
+
+  <script type="text/javascript" src="js/libs/require.js" data-main="js/main"></script>
 </body>
 </html>

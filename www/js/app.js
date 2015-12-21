@@ -2,53 +2,125 @@
 
 define([
   'jquery',
-  'kendo'
+  'kendo',
+  'views/index',
+  'views/tambah',
+  'views/kalender',
+  'data',
+  'serializeObject'
 ], function (
   $,
-  kendo
+  kendo,
+  indexView,
+  tambahView,
+  kalenderView,
+  data
 ) {
   var $body = $('body');
   return {
+    interval: 0,
     init: function () {
       kendoApp = new kendo.mobile.Application($('#body'), {
-        skin: "material",
+        skin: "nova",
         init: function () {
-          if (!IsDesktop) {
+          if (!IsDesktop && navigator.splashscreen) {
             navigator.splashscreen.hide();
           }
+          App.loadDayData();
           App.loadDatabase();
         }
       });
     },
 
-    loadDatabase: function () {
-      var incomes = [];
+    views: {
+      index: indexView,
+      tambah: tambahView,
+      kalender: kalenderView
+    },
+
+    totalIncome: 0,
+    totalExpense: 0,
+    totalMoney: 0,
+
+    data: data,
+
+    loadDayData: function () {
+      var $homeDay = $('#home-day');
+      var date = new Date();
+      if (App.interval !== 0) {
+        date.setDate(date.getDate() + App.interval);
+        $homeDay.text(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
+      } else {
+        $homeDay.text('Today');
+      }
       db.transaction(function (transaction) {
-        transaction.executeSql('SELECT id, amount, name FROM income;', [],
+        var data = {
+          income: [],
+          expense: []
+        };
+        transaction.executeSql('SELECT * FROM expense WHERE date = ?;',
+          [
+            date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+          ],
+          function (transaction, result) {
+            if (result != null && result.rows != null) {
+              App.totalIncome = 0;
+              for (var i = 0; i < result.rows.length; i++) {
+                var row = result.rows.item(i);
+                var type = row.type || 'expense';
+                data[type].push(row);
+                App.totalIncome += parseInt(row.amount);
+              }
+              App.data.income.data(data.income);
+              App.data.expense.data(data.expense);
+            }
+          },
+          DBHandler.errorHandler
+        );
+      }, DBHandler.errorHandler, DBHandler.nullHandler);
+    },
+
+    loadDatabase: function () {
+      var date = new Date();
+      var endMonthDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+      db.transaction(function (transaction) {
+        transaction.executeSql('SELECT * FROM expense WHERE date BETWEEN ? AND ?;',
+          [
+            date.getFullYear() + '-' + (date.getMonth() + 1) + '-1',
+            date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + endMonthDate.getDate()
+          ],
           function (transaction, result) {
             if (result != null && result.rows != null) {
               for (var i = 0; i < result.rows.length; i++) {
                 var row = result.rows.item(i);
-                incomes.push(row);
+                App.data.schedule.add({
+                  start: new Date(row.date + ' ' + row.time),
+                  end: new Date(row.date + ' ' + row.time),
+                  title: row.name + ' - Rp ' + row.amount,
+                  type: row.type
+                });
               }
             }
           },
           DBHandler.errorHandler
         );
-      }, DBHandler.errorHandler, function () {
-        App.data.income.data(incomes);
-      });
+      }, DBHandler.errorHandler, DBHandler.nullHandler);
+    },
 
-      //$("#playlist-select").kendoMobileListView({
-      //  dataSource: App.data.playLists,
-      //  template: $("#playlist-select-template").text()
-      //});
+    prevDay: function () {
+      App.interval -= 1;
+      App.loadDayData();
+    },
+
+    nextDay: function () {
+      App.interval += 1;
+      App.loadDayData();
     },
 
     backPressed: function () {
-      if (app.views.home.drawer) {
+      if (App.drawer) {
         $("#drawer").data("kendoMobileDrawer").hide();
-        app.views.home.drawerOnHide();
+        App.drawerOnHide();
       } else {
         var currentTime = new Date();
         if ((currentTime - lastPressExit) > 5000) {
@@ -60,9 +132,23 @@ define([
       }
     },
 
-    views: {
-      index: indexView,
-      pemasukan: pemasukanView
+    drawer: false,
+
+    drawerOnShow: function(){
+      App.drawer = true;
+    },
+    drawerOnHide: function(){
+      App.drawer = false;
+    },
+
+    menuPressed: function(){
+      if(App.drawer){
+        $("#drawer").data("kendoMobileDrawer").hide();
+        App.drawerOnHide();
+      } else {
+        $("#drawer").data("kendoMobileDrawer").show();
+        App.drawerOnShow();
+      }
     },
 
     // Get value of query hash by param name

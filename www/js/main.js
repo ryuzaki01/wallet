@@ -6,11 +6,13 @@ var DBHandler;
 var db;
 var lastPressExit = new Date();
 var IsDesktop = true;
+
 require.config({
   paths: {
     jquery: "libs/jquery-2.1.1.min",
+    kendo: "libs/kendo.all.min",
     domReady: "libs/domReady",
-    kendo: "libs/kendo.all.min"
+    serializeObject: "libs/jquery.serializeObject"
   },
   waitSeconds: 30,
   shim: {
@@ -20,7 +22,8 @@ require.config({
     kendo: {
       deps: ["jquery"],
       exports: "kendo"
-    }
+    },
+    serializeObject: ['jquery']
   }
 });
 
@@ -30,7 +33,7 @@ define([
   'domReady',
   'db'
 ], function (Application, $, domReady, DB) {
-  App = application;
+  App = Application;
   DBHandler = DB;
 
   console.log('Require initiating..');
@@ -43,8 +46,8 @@ define([
       if (desktop != true){
         IsDesktop = false;
 
-        document.addEventListener("backbutton", app.backPressed, false);
-        document.addEventListener("menubutton", app.menuPressed, false);
+        document.addEventListener("backbutton", App.backPressed, false);
+        document.addEventListener("menubutton", App.menuPressed, false);
       }
     }
 
