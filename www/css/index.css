@@ -29,6 +29,17 @@
 .green {
     color: #00b300;
 }
+
+.small {
+    font-size: small;
+}
+
+.row:before, .row:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
 .btn, .btn-large, .btn-flat {
     border: none;
     border-radius: 2px;
@@ -98,11 +109,11 @@
     display: none;
 }
 
-.km-nova .history-list.km-list>li {
+.km-nova .history-list.km-list>li, .km-nova .target-list.km-list>li, .km-nova .section.km-list>li {
     padding: 10px;
 }
 
-.km-nova .history-list.km-list>li table {
+.km-nova .history-list.km-list>li table, .km-nova .target-list.km-list>li table  {
     width: 100%;
     table-layout: fixed;
 }

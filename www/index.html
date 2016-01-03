@@ -26,7 +26,7 @@
     <ul data-role="listview" class="section">
       <li><b>Pemasukan</b><span id="home-income" class="right green">Rp 0</span></li>
       <li><b>Pengeluaran</b><span id="home-expense" class="right red">Rp 0</span></li>
-      <li><span class="right">______________</span></li>
+      <li><span class="right">______________ -</span></li>
       <li><b><span id="home-total" class="right">Rp 0</span></b></li>
     </ul>
 
@@ -45,12 +45,12 @@
     </ul>
 
     <script type="text/x-kendo-template" id="history-item-template">
-      <table>
-        <tr>
-          <td>#: name #</td>
-          <td class="money">Rp #: amount #</td>
-        </tr>
-      </table>
+      <div style="color: grey; font-size: small;">#: category #</div>
+      <div class="row">
+        <div class="left">#: name #</div>
+        <div class="money right #if (type === 'income') { #green# } else { #red# } #">Rp #: amount #</div>
+      </div>
+      <div class="small"><b>Catatan :</b> #if (note) {##: note ##} else { #-# } #</div>
     </script>
   </div>
 
@@ -83,27 +83,17 @@
                 <label>
                   <span id="expensetype">Pemasukan</span>
                   <input name="type" type="hidden" value="off">
-                  <input name="type" type="checkbox" data-role="switch" />
+                  <input id="add-expensetype" name="type" type="checkbox" data-role="switch" />
                 </label>
               </li>
               <li>
-                <label class="km-required km-label-above">Jumlah
-                  <input name="amount" type="number" value=""/>
+                <label class="km-required km-label-above">Nominal
+                  <input name="amount" type="number" value="" placeholder="0"/>
                 </label>
               </li>
               <li>
                 <label class="km-icon-label k-i-briefcase">
-                  <select name="category">
-                    <option value="">- Pilih Kategori -</option>
-                    <option class="cat-expense">Belanja</option>
-                    <option class="cat-expense">Cicilan</option>
-                    <option class="cat-expense">Ongkos</option>
-                    <option class="cat-income">Gaji</option>
-                    <option class="cat-income">Penghasilan Sampingan</option>
-                    <option class="cat-income">Bonus</option>
-                    <option class="cat-income">Hadiah</option>
-                    <option>Lainnya</option>
-                  </select>
+                  <input id="add-category" name="category" />
                 </label>
               </li>
               <li>
@@ -138,18 +128,67 @@
 
   <div data-role="view" data-title="Target" id="target" data-layout="drawer-layout" data-init="App.views.tambah.init"
        data-show="App.views.tambah.show">
-      <form id="target-form">
-        <ul data-role="listview">
-          <li>
-            <label class="km-required km-label-above">Nama
-              <input name="name" value="" type="text"/>
-            </label>
+        <ul data-role="listview" data-style="inset">
+          <li style="padding: 0;">
+            <div id="collapsible" data-role="collapsible">
+              <h2>Buat Target Baru</h2>
+              <p>
+                <form id="target-form">
+                  <ul data-role="listview" data-style="inset">
+                    <li>
+                      <label class="km-required km-label-above">Nama
+                        <input name="name" value="" type="text"/>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="km-required km-label-above">Nominal
+                        <input name="amount" value="" type="number"/>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="km-required km-label-above">Lama (Bulan)
+                        <input type="number" name="month" value="1">
+                      </label>
+                    </li>
+                    <li>
+                      <fieldset>
+                        <legend></legend>
+                        <a data-role="button" data-animated="true" class="km-primary km-justified"
+                           data-click="App.views.target.save">Simpan</a>
+                      </fieldset>
+                    </li>
+                  </ul>
+                </form>
+              </p>
+            </div>
+          </li>
+          <li style="padding: 0;">
+            <h2 class="text-center">List Target</h2>
+          </li>
+          <li style="padding: 0;">
+            <ul data-role="listview" class="target-list" data-style="inset" data-template="target-item-template" data-source="App.data.target">
+
+            </ul>
           </li>
         </ul>
-      </form>
 
-      <h3>List Target</h3>
-      <ul></ul>
+      <script type="text/x-kendo-template" id="target-item-template">
+        <table style="width: 100%; table-layout: auto">
+          <tr>
+            <td colspan="3">#: name #</td>
+          </tr>
+          <tr>
+            <td class="money green text-right" style="width: 50%;">#: amount_paid #</td>
+            <td width="10px">/</td>
+            <td class="money red text-left" style="width: 50%;">#: amount #</td>
+          </tr>
+          <tr>
+            <td class="text-center small">#:  month # Bulan</td>
+            <td></td>
+            <td class="text-center small">Start : #: date #</td>
+          </tr>
+        </table>
+      </script>
   </div>
 
   <div data-role="view" data-title="Kalender" id="kalender" data-layout="drawer-layout"

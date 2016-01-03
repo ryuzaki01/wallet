@@ -5,6 +5,7 @@ define([
   'kendo',
   'views/index',
   'views/tambah',
+  'views/target',
   'views/kalender',
   'data',
   'serializeObject'
@@ -13,6 +14,7 @@ define([
   kendo,
   indexView,
   tambahView,
+  targetView,
   kalenderView,
   data
 ) {
@@ -26,8 +28,8 @@ define([
           if (!IsDesktop && navigator.splashscreen) {
             navigator.splashscreen.hide();
           }
-          App.loadDayData();
-          App.loadDatabase();
+          App.loadDayData(App.loadDatabase);
+          App.loadTargetData();
         }
       });
     },
@@ -35,6 +37,7 @@ define([
     views: {
       index: indexView,
       tambah: tambahView,
+      target : targetView,
       kalender: kalenderView
     },
 
@@ -44,7 +47,7 @@ define([
 
     data: data,
 
-    loadDayData: function () {
+    loadDayData: function (cb) {
       var $homeDay = $('#home-day');
       var date = new Date();
       if (App.interval !== 0) {
@@ -77,10 +80,14 @@ define([
           },
           DBHandler.errorHandler
         );
-      }, DBHandler.errorHandler, DBHandler.nullHandler);
+      }, DBHandler.errorHandler, function () {
+        if (typeof cb === 'function') {
+          cb.call();
+        }
+      });
     },
 
-    loadDatabase: function () {
+    loadDatabase: function (cb) {
       var date = new Date();
       var endMonthDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
       db.transaction(function (transaction) {
@@ -104,7 +111,31 @@ define([
           },
           DBHandler.errorHandler
         );
-      }, DBHandler.errorHandler, DBHandler.nullHandler);
+      }, DBHandler.errorHandler, function () {
+        if (typeof cb === 'function') {
+          cb.call();
+        }
+      });
+    },
+
+    loadTargetData: function (cb) {
+      db.transaction(function (transaction) {
+        transaction.executeSql('SELECT * FROM target;', [],
+          function (transaction, result) {
+            if (result != null && result.rows != null) {
+              for (var i = 0; i < result.rows.length; i++) {
+                var row = result.rows.item(i);
+                App.data.target.add(row);
+              }
+            }
+          },
+          DBHandler.errorHandler
+        );
+      }, DBHandler.errorHandler, function () {
+        if (typeof cb === 'function') {
+          cb.call();
+        }
+      });
     },
 
     prevDay: function () {

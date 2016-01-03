@@ -26,8 +26,52 @@ define(["kendo"], function (kendo) {
         $('#home-total').text('Rp ' + App.totalMoney);
       }
     }),
-    schedule:kendo.data.SchedulerDataSource.create({
+    schedule: kendo.data.SchedulerDataSource.create({
       data: []
-    })
+    }),
+    target: kendo.data.DataSource.create({
+      data: []
+    }),
+    category: kendo.data.DataSource.create({
+      data: []
+    }),
+    defaultCategories: [
+      {
+        name: 'Gaji',
+        type: 'income'
+      },
+      {
+        name: 'Penghasilan Sampingan',
+        type: 'income'
+      },
+      {
+        name: 'Bonus',
+        type: 'income'
+      },
+      {
+        name: 'Hadiah',
+        type: 'income'
+      },
+      {
+        name: 'Lainnya',
+        type: 'income'
+      },
+      {
+        name: 'Belanja',
+        type: 'expense'
+      },
+      {
+        name: 'Cicilan',
+        type: 'expense'
+      },
+      {
+        name: 'Transportasi',
+        type: 'expense'
+      },
+      {
+        name: 'Lainnya',
+        type: 'expense'
+      }
+    ]
   }
 });
