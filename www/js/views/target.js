@@ -31,12 +31,12 @@ define(["kendo"], function (kendo) {
             1
           ], DBHandler.nullHandler, DBHandler.errorHandler);
         data.amount_paid = 0;
+        data.date = dateNow;
         App.data.target.add(data);
         App.data.category.add({
           name: data.name,
           type: 'expense',
-          istarget: 1,
-          date: dateNow
+          istarget: 1
         });
         App.views.target.$form[0].reset();
         alert('Target telah ditambahkan');
