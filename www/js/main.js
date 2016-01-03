@@ -11,6 +11,7 @@ require.config({
   paths: {
     jquery: "libs/jquery-2.1.1.min",
     kendo: "libs/kendo.all.min",
+    cultureID: "libs/kendo.culture.id-ID.min",
     domReady: "libs/domReady",
     serializeObject: "libs/jquery.serializeObject"
   },
@@ -23,6 +24,7 @@ require.config({
       deps: ["jquery"],
       exports: "kendo"
     },
+    cultureID: ['kendo'],
     serializeObject: ['jquery']
   }
 });

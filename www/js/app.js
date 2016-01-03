@@ -3,6 +3,7 @@
 define([
   'jquery',
   'kendo',
+  'cultureID',
   'views/index',
   'views/tambah',
   'views/target',
@@ -12,6 +13,7 @@ define([
 ], function (
   $,
   kendo,
+  cultureID,
   indexView,
   tambahView,
   targetView,
@@ -22,6 +24,7 @@ define([
   return {
     interval: 0,
     init: function () {
+      kendo.culture("id-ID");
       kendoApp = new kendo.mobile.Application($('#body'), {
         skin: "nova",
         init: function () {
@@ -54,7 +57,7 @@ define([
         date.setDate(date.getDate() + App.interval);
         $homeDay.text(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
       } else {
-        $homeDay.text('Today');
+        $homeDay.text('Hari Ini');
       }
       db.transaction(function (transaction) {
         var data = {

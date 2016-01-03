@@ -87,7 +87,7 @@ define(["kendo"], function (kendo) {
         App.data.schedule.add({
           start: new Date(data.date + ' ' + data.time),
           end: new Date(data.date + ' ' + data.time),
-          title: data.name + ' - Rp ' + data.amount,
+          title: data.name + ' - ' + kendo.toString(data.amount, "c0"),
           type: data.type
         });
         App.views.tambah.$form[0].reset();

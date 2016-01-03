@@ -2,7 +2,7 @@ define(["kendo"], function (kendo) {
   return {
     $form: $('#target-form'),
     init: function (e) {
-      // Nothing
+
     },
     show: function () {
       // Nothing

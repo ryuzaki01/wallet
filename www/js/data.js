@@ -8,9 +8,9 @@ define(["kendo"], function (kendo) {
           App.totalIncome += parseInt(d.amount);
         });
         App.totalMoney = App.totalIncome - App.totalExpense;
-        $('#home-income').text('Rp ' + App.totalIncome);
-        $('#home-expense').text('Rp ' + App.totalExpense);
-        $('#home-total').text('Rp ' + App.totalMoney);
+        $('#home-income').text(kendo.toString(App.totalIncome, "c0"));
+        $('#home-expense').text(kendo.toString(App.totalExpense, "c0"));
+        $('#home-total').text(kendo.toString(App.totalMoney, "c0"));
       }
     }),
     expense: kendo.data.DataSource.create({
@@ -21,9 +21,9 @@ define(["kendo"], function (kendo) {
           App.totalExpense += parseInt(d.amount);
         });
         App.totalMoney = App.totalIncome - App.totalExpense;
-        $('#home-income').text('Rp ' + App.totalIncome);
-        $('#home-expense').text('Rp ' + App.totalExpense);
-        $('#home-total').text('Rp ' + App.totalMoney);
+        $('#home-income').text(kendo.toString(App.totalIncome, "c0"));
+        $('#home-expense').text(kendo.toString(App.totalExpense, "c0"));
+        $('#home-total').text(kendo.toString(App.totalMoney, "c0"));
       }
     }),
     schedule: kendo.data.SchedulerDataSource.create({

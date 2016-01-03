@@ -18,7 +18,7 @@
     <table style="width: 100%; border-bottom: 1px solid #ddd">
       <tr>
         <td class="text-left"><a data-role="button" data-click="App.prevDay"><</a></td>
-        <td id="home-day" class="text-center">Today</td>
+        <td id="home-day" class="text-center">Hari Ini</td>
         <td class="text-right"><a data-role="button" data-click="App.nextDay">></a></td>
       </tr>
     </table>
@@ -48,7 +48,7 @@
       <div style="color: grey; font-size: small;">#: category #</div>
       <div class="row">
         <div class="left">#: name #</div>
-        <div class="money right #if (type === 'income') { #green# } else { #red# } #">Rp #: amount #</div>
+        <div class="money right #if (type === 'income') { #green# } else { #red# } #">#: kendo.toString(amount, "c0") #</div>
       </div>
       <div class="small"><b>Catatan :</b> #if (note) {##: note ##} else { #-# } #</div>
     </script>
@@ -178,9 +178,9 @@
             <td colspan="3">#: name #</td>
           </tr>
           <tr>
-            <td class="money green text-right" style="width: 50%;">#: amount_paid #</td>
+            <td class="money green text-right" style="width: 50%;">#: kendo.toString(amount_paid, "c0") #</td>
             <td width="10px">/</td>
-            <td class="money red text-left" style="width: 50%;">#: amount #</td>
+            <td class="money red text-left" style="width: 50%;">#: kendo.toString(amount, "c0") #</td>
           </tr>
           <tr>
             <td class="text-center small">#:  month # Bulan</td>
