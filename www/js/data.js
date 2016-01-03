@@ -30,10 +30,19 @@ define(["kendo"], function (kendo) {
       data: []
     }),
     target: kendo.data.DataSource.create({
+      schema: {
+        model: {
+          id: "id"
+        }
+      },
       data: []
     }),
     category: kendo.data.DataSource.create({
-      data: []
+      data: [],
+      sort: [
+        { field: "target", dir: "desc" },
+        { field: "id", dir: "asc" }
+      ]
     }),
     defaultCategories: [
       {

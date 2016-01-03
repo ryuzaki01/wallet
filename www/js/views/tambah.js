@@ -54,6 +54,7 @@ define(["kendo"], function (kendo) {
     },
 
     reloadCategory: function () {
+      console.log('Reloading category..');
       App.data.category.filter({field: "type", value: App.views.tambah.addType});
       $("#add-category").data('kendoDropDownList').select(0);
     },
@@ -75,11 +76,27 @@ define(["kendo"], function (kendo) {
             data.note || ''
           ], DBHandler.nullHandler, DBHandler.errorHandler);
         tx.executeSql(
-          'SELECT * FROM category WHERE name = ?', [data.category], function (transaction, result) {
-            if (result != null && result.rows != null) {
-              var row = result.rows[0];
-              if (row.istarget === 1) {
-               console.log('Target ' + row.name);
+          'SELECT * FROM category WHERE name = ?', [data.category], function (tx, res) {
+            if (res != null && res.rows != null) {
+              var row = res.rows[0];
+              if (row.target) {
+               console.log('Updating target : ' + row.name);
+                tx.executeSql(
+                  'SELECT * FROM target WHERE id = ?', [row.target], function (tx, result) {
+                    var targetRow = result.rows[0];
+                    var newAmountPaid = (parseInt(targetRow.amount_paid) + parseInt(data.amount));
+                    tx.executeSql(
+                      'UPDATE target SET amount_paid = ? WHERE id = ?', [newAmountPaid, row.target], function (tx) {
+                        App.data.target.pushUpdate({
+                          id: row.target,
+                          name: targetRow.name,
+                          amount: targetRow.amount,
+                          amount_paid: newAmountPaid,
+                          month: targetRow.month,
+                          date: targetRow.date
+                        });
+                      }, DBHandler.errorHandler);
+                  }, DBHandler.errorHandler);
               }
             }
           }, DBHandler.errorHandler);
