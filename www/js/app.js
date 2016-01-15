@@ -35,6 +35,8 @@ define([
           App.loadTargetData();
         }
       });
+
+      
     },
 
     views: {

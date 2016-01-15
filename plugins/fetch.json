@@ -6,5 +6,14 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.ionic.keyboard": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Telerik-Verified-Plugins/Keyboard",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
