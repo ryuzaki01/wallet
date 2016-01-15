@@ -37,8 +37,10 @@ define([
         }
       });
 
-      $('input, textarea').on('click', function () {
-        App.currentView.scroller.scrollTo(0, - ($(this).offset().top - 100));
+      $('input:not([type="checkbox"]):not([type="radio"]), textarea').on('click', function () {
+        if(App.currentView.scroller) {
+          App.currentView.scroller.scrollTo(0, - ($(this).offset().top  + App.currentView.scroller.scrollTop - 100));
+        }
       });
     },
 

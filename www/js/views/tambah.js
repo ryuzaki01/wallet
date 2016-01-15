@@ -49,6 +49,7 @@ define(["kendo"], function (kendo) {
 
     hide: function (e) {
       e.view.scroller.reset();
+      $("#add-expensetype").data("kendoMobileSwitch").check(false);
     },
 
     show: function (e) {
@@ -110,7 +111,6 @@ define(["kendo"], function (kendo) {
           type: data.type
         });
         App.views.tambah.$form[0].reset();
-        $("#add-expensetype").data("kendoMobileSwitch").refresh();
         kendoApp.navigate('index');
       }, DBHandler.errorHandler, DBHandler.nullHandler);
     }
