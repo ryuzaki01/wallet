@@ -30,19 +30,19 @@ define(["kendo"], function (kendo) {
         dataSource: App.data.category
       });
 
-      loadCategory(function () {
-        App.views.tambah.$form.find('[name="type"]:eq(1)').on('change', function () {
-          if (App.views.tambah.$form.find('[name="type"]:eq(1)').is(':checked')) {
-            $('#expensetype').text('Pengeluaran');
-            App.views.tambah.addType = 'expense';
-          } else {
-            $('#expensetype').text('Pemasukan');
-            App.views.tambah.addType = 'income';
-          }
-          App.views.tambah.reloadCategory();
-        });
-      });
+      loadCategory();
 
+      App.views.tambah.reloadCategory();
+    },
+
+    switchExpenseType: function (e) {
+      if (e.checked) {
+        $('#expensetype').text('Pengeluaran');
+        App.views.tambah.addType = 'expense';
+      } else {
+        $('#expensetype').text('Pemasukan');
+        App.views.tambah.addType = 'income';
+      }
       App.views.tambah.reloadCategory();
     },
 
@@ -55,6 +55,7 @@ define(["kendo"], function (kendo) {
 
     reloadCategory: function () {
       console.log('Reloading category..');
+      App.data.category.filter([]);
       App.data.category.filter({field: "type", value: App.views.tambah.addType});
       $("#add-category").data('kendoDropDownList').select(0);
     },

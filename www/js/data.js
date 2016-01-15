@@ -46,38 +46,47 @@ define(["kendo"], function (kendo) {
     }),
     defaultCategories: [
       {
+        id: 1,
         name: 'Gaji',
         type: 'income'
       },
       {
+        id: 2,
         name: 'Penghasilan Sampingan',
         type: 'income'
       },
       {
+        id: 3,
         name: 'Bonus',
         type: 'income'
       },
       {
+        id: 4,
         name: 'Hadiah',
         type: 'income'
       },
       {
+        id: 5,
         name: 'Lainnya',
         type: 'income'
       },
       {
+        id: 6,
         name: 'Belanja',
         type: 'expense'
       },
       {
+        id: 7,
         name: 'Cicilan',
         type: 'expense'
       },
       {
+        id: 8,
         name: 'Transportasi',
         type: 'expense'
       },
       {
+        id: 9,
         name: 'Lainnya',
         type: 'expense'
       }
