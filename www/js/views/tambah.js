@@ -24,6 +24,7 @@ define(["kendo"], function (kendo) {
     $form: $('#form-new-entry'),
     addType: 'income',
     init: function (e) {
+      App.currentView = e.view;
       $("#add-category").kendoDropDownList({
         dataTextField: "name",
         dataValueField: "name",

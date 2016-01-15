@@ -1,6 +1,8 @@
 define(["kendo"], function (kendo) {
   return {
     init: function (e) {
+      App.currentView = e.view;
+
       var date = new Date();
       $("#scheduler").kendoScheduler({
         allDaySlot: false,

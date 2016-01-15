@@ -4,6 +4,7 @@ define(["kendo"], function (kendo) {
     type: 'income',
     init: function (e) {
       // Nothing
+      App.currentView = e.view;
     },
     refreshList: function () {
       var listView = App.views.index.$historyList.data('kendoMobileListView');

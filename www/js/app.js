@@ -23,6 +23,7 @@ define([
   var $body = $('body');
   return {
     interval: 0,
+    currentView: false,
     init: function () {
       kendo.culture("id-ID");
       kendoApp = new kendo.mobile.Application($('#body'), {
@@ -36,7 +37,9 @@ define([
         }
       });
 
-      
+      $('input, textarea').on('click', function () {
+        App.currentView.scroller.scrollTo(0, - ($(this).offset().top - 100));
+      });
     },
 
     views: {

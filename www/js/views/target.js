@@ -2,7 +2,7 @@ define(["kendo"], function (kendo) {
   return {
     $form: $('#target-form'),
     init: function (e) {
-
+      App.currentView = e.view;
     },
     show: function () {
       // Nothing
