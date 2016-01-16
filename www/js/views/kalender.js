@@ -3,17 +3,37 @@ define(["kendo"], function (kendo) {
     init: function (e) {
       App.currentView = e.view;
 
+      App.views.kalender.initScheduler();
+    },
+
+    beforeShow: function (beforeShowEvt) {
+      // Nothing
+    },
+
+    initScheduler: function () {
       var date = new Date();
-      $("#scheduler").kendoScheduler({
+      var $scheduleElement = $("#scheduler");
+      var scheduler = $scheduleElement.data("kendoScheduler");
+
+      if (scheduler) {
+        scheduler.destroy();
+        $scheduleElement.empty();
+      }
+
+      $scheduleElement.kendoScheduler({
         allDaySlot: false,
         start: new Date(date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' 6:00 AM'),
         end: new Date(date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' 5:00 AM'),
         height: 560,
+        majorTick: 120,
+        mobile: true,
         views: [
-          {type: "day"}
+          "agenda",
+          "day"
         ],
-        timezone: "Etc/UTC",
+        editable: false,
         dataSource: App.data.schedule,
+        eventTemplate: $("#event-template").html(),
         resources: [
           {
             field: "type",
@@ -27,13 +47,9 @@ define(["kendo"], function (kendo) {
         ]
       });
     },
-
-    beforeShow: function (beforeShowEvt) {
-      // Nothing
-    },
-
     show: function (showEvt) {
-      // ... show event code ...
+      console.log('showing Calendar..');
+      App.views.kalender.initScheduler();
     }
   }
 });

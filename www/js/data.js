@@ -27,6 +27,7 @@ define(["kendo"], function (kendo) {
       }
     }),
     schedule: kendo.data.SchedulerDataSource.create({
+      online: false,
       data: []
     }),
     target: kendo.data.DataSource.create({

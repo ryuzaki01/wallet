@@ -128,3 +128,11 @@
     -webkit-box-shadow: inset 0 .202rem .403rem 0 green;
     box-shadow: inset 0 .202rem .403rem 0 green;
 }
+
+.expense-template p {
+    margin: 5px 0 0;
+}
+.expense-template h3 {
+    padding: 0 8px 5px;
+    font-size: 12px;
+}

@@ -49,6 +49,8 @@ define(["kendo"], function (kendo) {
 
     hide: function (e) {
       e.view.scroller.reset();
+      App.views.tambah.$form[0].reset();
+      $('#expensetype').text('Pemasukan');
       $("#add-expensetype").data("kendoMobileSwitch").check(false);
     },
 
@@ -80,7 +82,7 @@ define(["kendo"], function (kendo) {
           ], DBHandler.nullHandler, DBHandler.errorHandler);
         tx.executeSql(
           'SELECT * FROM category WHERE name = ?', [data.category], function (tx, res) {
-            if (res != null && res.rows != null) {
+            if (res != null && res.rows != null && res.rows.length > 0) {
               var row = res.rows[0];
               if (row.target) {
                console.log('Updating target : ' + row.name);
@@ -98,20 +100,37 @@ define(["kendo"], function (kendo) {
                           month: targetRow.month,
                           date: targetRow.date
                         });
+
+                        App.data[data.type].add(data);
+                        var end = new Date(dateNow.setHours(dateNow.getHours() + 1));
+
+                        App.data.schedule.add({
+                          start: dateNow,
+                          end: end,
+                          title: data.name,
+                          amount: data.amount,
+                          type: data.type
+                        });
+
+                        kendoApp.navigate('index');
                       }, DBHandler.errorHandler);
                   }, DBHandler.errorHandler);
+              } else {
+                App.data[data.type].add(data);
+                var end = new Date(dateNow.setHours(dateNow.getHours() + 1));
+
+                App.data.schedule.add({
+                  start: dateNow,
+                  end: end,
+                  title: data.name,
+                  amount: data.amount,
+                  type: data.type
+                });
+
+                kendoApp.navigate('index');
               }
             }
           }, DBHandler.errorHandler);
-        App.data[data.type].add(data);
-        App.data.schedule.add({
-          start: new Date(data.date + ' ' + data.time),
-          end: new Date(data.date + ' ' + data.time),
-          title: data.name + ' - ' + kendo.toString(data.amount, "c0"),
-          type: data.type
-        });
-        App.views.tambah.$form[0].reset();
-        kendoApp.navigate('index');
       }, DBHandler.errorHandler, DBHandler.nullHandler);
     }
   }

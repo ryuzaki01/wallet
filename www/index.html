@@ -211,6 +211,13 @@
         <li data-icon="recents"><a href="#kalender" data-transition="none">Kalender</a></li>
       </ul>
     </div>
+
+    <script id="event-template" type="text/x-kendo-template">
+      <div class="expense-template">
+        <h2>#: title #</h2>
+        <b>#: kendo.toString(amount, "c0") #</b>
+      </div>
+    </script>
   </div>
 
   <div data-role="layout" data-id="drawer-layout" data-show="App.showDrawer">

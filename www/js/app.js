@@ -110,10 +110,14 @@ define([
             if (result != null && result.rows != null) {
               for (var i = 0; i < result.rows.length; i++) {
                 var row = result.rows.item(i);
+                var start = new Date(row.date + ' ' + row.time);
+                var end = new Date(start.setHours(start.getHours() + 1));
+
                 App.data.schedule.add({
-                  start: new Date(row.date + ' ' + row.time),
-                  end: new Date(row.date + ' ' + row.time),
-                  title: row.name + ' - Rp ' + row.amount,
+                  start: start,
+                  end: end,
+                  title: row.name,
+                  amount: row.amount,
                   type: row.type
                 });
               }
