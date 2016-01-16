@@ -48,7 +48,7 @@ define(["kendo"], function (kendo) {
     },
 
     hide: function (e) {
-      e.view.scroller.reset();
+      App.currentView.scroller.reset();
       App.views.tambah.$form[0].reset();
       $('#expensetype').text('Pemasukan');
       $("#add-expensetype").data("kendoMobileSwitch").check(false);
