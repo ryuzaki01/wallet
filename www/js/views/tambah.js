@@ -64,7 +64,7 @@ define(["kendo"], function (kendo) {
       $("#add-category").data('kendoDropDownList').select(0);
     },
 
-    save: function () {
+    save: function (e) {
       var data = App.views.tambah.$form.serializeObject();
       data.type = (data.type === 'on' ? 'expense' : 'income');
       var dateNow = new Date();
@@ -146,6 +146,7 @@ define(["kendo"], function (kendo) {
             }
           }, DBHandler.errorHandler);
       }, DBHandler.errorHandler, DBHandler.nullHandler);
+      e.preventDefault();
     }
   }
 });

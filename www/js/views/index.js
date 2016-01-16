@@ -29,7 +29,7 @@ define(["kendo"], function (kendo) {
           );
 
           var totalSaldo = App.model.get('totalSaldo');
-          switch (data.type) {
+          switch (model.type) {
             case 'income':
               App.model.set('totalSaldo', totalSaldo - (parseInt(model.amount) || 0));
               break;
