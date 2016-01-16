@@ -15,7 +15,10 @@
   <div data-role="view" data-title="Home" id="index" data-layout="drawer-layout" data-show="App.views.index.show"
        data-init="App.views.index.init" data-hide="App.views.index.hide">
 
-    <table style="width: 100%; border-bottom: 1px solid #ddd">
+    <div>
+      <h1 data-bind="text: totalSaldoText" class="text-center">Rp0</h1>
+    </div>
+    <table class="dateNavigator">
       <tr>
         <td class="text-left"><a data-role="button" data-click="App.prevDay"><</a></td>
         <td id="home-day" class="text-center">Hari Ini</td>
@@ -24,10 +27,10 @@
     </table>
 
     <ul data-role="listview" class="section">
-      <li><b>Pemasukan</b><span id="home-income" class="right green">Rp 0</span></li>
-      <li><b>Pengeluaran</b><span id="home-expense" class="right red">Rp 0</span></li>
+      <li><b>Pemasukan</b><span data-bind="text: incomeText" class="right green">Rp 0</span></li>
+      <li><b>Pengeluaran</b><span data-bind="text: expenseText" class="right red">Rp 0</span></li>
       <li><span class="right">______________ -</span></li>
-      <li><b><span id="home-total" class="right">Rp 0</span></b></li>
+      <li><b><span data-bind="text: saldoText" class="right">Rp 0</span></b></li>
     </ul>
 
     <ul data-role="listview" style="margin-bottom: 150px;" data-style="inset">

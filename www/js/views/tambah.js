@@ -31,9 +31,7 @@ define(["kendo"], function (kendo) {
         dataSource: App.data.category
       });
 
-      loadCategory();
-
-      App.views.tambah.reloadCategory();
+      loadCategory(App.views.tambah.reloadCategory);
     },
 
     switchExpenseType: function (e) {
@@ -48,7 +46,9 @@ define(["kendo"], function (kendo) {
     },
 
     hide: function (e) {
-      App.currentView.scroller.reset();
+      if (App.currentView.scroller) {
+        App.currentView.scroller.reset();
+      }
       App.views.tambah.$form[0].reset();
       $('#expensetype').text('Pemasukan');
       $("#add-expensetype").data("kendoMobileSwitch").check(false);
@@ -79,7 +79,21 @@ define(["kendo"], function (kendo) {
             data.date || dateNow.getFullYear() + '-' + (dateNow.getMonth() + 1) + '-' + dateNow.getDate(),
             data.time || dateNow.getHours() + ':' + (dateNow.getMinutes() + 1) + ':' + dateNow.getSeconds(),
             data.note || ''
-          ], DBHandler.nullHandler, DBHandler.errorHandler);
+          ], function () {
+            var totalSaldo = App.model.get('totalSaldo');
+            switch (data.type) {
+              case 'income':
+                App.model.set('totalSaldo', totalSaldo + (parseInt(data.amount) || 0));
+              break;
+              case 'expense':
+                App.model.set('totalSaldo', totalSaldo - (parseInt(data.amount) || 0));
+              break;
+              default:
+              break;
+            }
+
+            App.updateStore();
+          }, DBHandler.errorHandler);
         tx.executeSql(
           'SELECT * FROM category WHERE name = ?', [data.category], function (tx, res) {
             if (res != null && res.rows != null && res.rows.length > 0) {

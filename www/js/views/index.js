@@ -20,7 +20,32 @@ define(["kendo"], function (kendo) {
 
       if (target.closest("[data-role=button]")[0]) {
         model = App.data[App.views.index.type].getByUid($(e.touch.target).attr("data-uid"));
-        App.data[App.views.index.type].remove(model);
+        db.transaction(function (tx) {
+          tx.executeSql('DELETE FROM expense WHERE id = ?;', [model.id],
+            function (transaction, result) {
+              App.data[App.views.index.type].remove(model);
+            },
+            DBHandler.errorHandler
+          );
+
+          var totalSaldo = App.model.get('totalSaldo');
+          switch (data.type) {
+            case 'income':
+              App.model.set('totalSaldo', totalSaldo - (parseInt(model.amount) || 0));
+              break;
+            case 'expense':
+              App.model.set('totalSaldo', totalSaldo + (parseInt(model.amount) || 0));
+              break;
+            default:
+              break;
+          }
+
+          App.updateStore();
+        }, DBHandler.errorHandler, function () {
+          if (typeof cb === 'function') {
+            cb.call();
+          }
+        });
 
         //prevent `swipe`
         this.events.cancel();
@@ -51,7 +76,9 @@ define(["kendo"], function (kendo) {
       $('#action-add').show();
     },
     hide: function () {
-      App.currentView.scroller.reset();
+      if (App.currentView.scroller) {
+        App.currentView.scroller.reset();
+      }
       $('#action-add').hide();
     }
   }

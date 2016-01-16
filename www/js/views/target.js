@@ -8,7 +8,9 @@ define(["kendo"], function (kendo) {
       // Nothing
     },
     hide: function () {
-      App.currentView.scroller.reset();
+      if (App.currentView.scroller) {
+        App.currentView.scroller.reset();
+      }
       // Nothing
     },
     save: function (){

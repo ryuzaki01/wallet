@@ -24,6 +24,24 @@ define([
   return {
     interval: 0,
     currentView: false,
+    model: kendo.observable({
+      totalSaldo: 0,
+      totalSaldoText: function() {
+        return kendo.toString(this.get("totalSaldo"), "c0");
+      },
+      income: 0,
+      incomeText: function() {
+        return kendo.toString(this.get("income"), "c0");
+      },
+      expense: 0,
+      expenseText: function() {
+        return kendo.toString(this.get("expense"), "c0");
+      },
+      saldo: 0,
+      saldoText: function() {
+        return kendo.toString(App.model.get("saldo"), "c0");
+      }
+    }),
     init: function () {
       kendo.culture("id-ID");
       kendoApp = new kendo.mobile.Application($('#body'), {
@@ -34,6 +52,7 @@ define([
           }
           App.loadDayData(App.loadDatabase);
           App.loadTargetData();
+          App.loadStoreData();
         }
       });
 
@@ -42,6 +61,8 @@ define([
           App.currentView.scroller.scrollTo(0, - ($(this).offset().top  + App.currentView.scroller.scrollTop - 100));
         }
       });
+
+      kendo.bind($("#index"), App.model);
     },
 
     views: {
@@ -77,12 +98,10 @@ define([
           ],
           function (transaction, result) {
             if (result != null && result.rows != null) {
-              App.totalIncome = 0;
               for (var i = 0; i < result.rows.length; i++) {
                 var row = result.rows.item(i);
                 var type = row.type || 'expense';
                 data[type].push(row);
-                App.totalIncome += parseInt(row.amount);
               }
               App.data.income.data(data.income);
               App.data.expense.data(data.expense);
@@ -149,6 +168,37 @@ define([
         if (typeof cb === 'function') {
           cb.call();
         }
+      });
+    },
+
+    loadStoreData: function (cb) {
+      db.transaction(function (transaction) {
+        transaction.executeSql('SELECT * FROM store;', [],
+          function (transaction, result) {
+            if (result != null && result.rows != null) {
+              for (var i = 0; i < result.rows.length; i++) {
+                var row = result.rows.item(i);
+                switch (row.id) {
+                  case 1:
+                    App.model.set('totalSaldo', parseInt(row.value) || 0);
+                  break;
+                }
+              }
+              App.updateStore();
+            }
+          },
+          DBHandler.errorHandler
+        );
+      }, DBHandler.errorHandler, function () {
+        if (typeof cb === 'function') {
+          cb.call();
+        }
+      });
+    },
+
+    updateStore: function () {
+      db.transaction(function (tx) {
+        tx.executeSql('UPDATE store SET value = ? WHERE id = ?', [App.model.get('totalSaldo'), 1], DBHandler.nullHandler, DBHandler.errorHandler);
       });
     },
 

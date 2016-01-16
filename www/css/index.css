@@ -150,3 +150,9 @@
     padding: 0 8px 5px;
     font-size: 12px;
 }
+
+.dateNavigator {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    background: #eee;
+}

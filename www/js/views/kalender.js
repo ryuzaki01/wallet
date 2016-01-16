@@ -14,7 +14,6 @@ define(["kendo"], function (kendo) {
       var date = new Date();
       var $scheduleElement = $("#scheduler");
       var scheduler = $scheduleElement.data("kendoScheduler");
-      var $schedulerContent = $('.k-scheduler-content');
 
       if (scheduler) {
         scheduler.destroy();
@@ -48,11 +47,13 @@ define(["kendo"], function (kendo) {
         ]
       });
 
-
+      var $schedulerContent = $('.k-scheduler-content');
       $schedulerContent.height($(window).height() - $schedulerContent.offset().top)
     },
     show: function (showEvt) {
       console.log('showing Calendar..');
+      var $schedulerContent = $('.k-scheduler-content');
+      $schedulerContent.height($(window).height() - $schedulerContent.offset().top)
     }
   }
 });

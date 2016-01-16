@@ -3,27 +3,25 @@ define(["kendo"], function (kendo) {
     income : kendo.data.DataSource.create({
       data:[],
       change: function(e) {
-        App.totalIncome = 0;
+        var income = 0;
         this.data().forEach(function (d) {
-          App.totalIncome += parseInt(d.amount);
+          income += parseInt(d.amount);
         });
-        App.totalMoney = App.totalIncome - App.totalExpense;
-        $('#home-income').text(kendo.toString(App.totalIncome, "c0"));
-        $('#home-expense').text(kendo.toString(App.totalExpense, "c0"));
-        $('#home-total').text(kendo.toString(App.totalMoney, "c0"));
+        var expense = App.model.get('expense');
+        App.model.set('income', income);
+        App.model.set('saldo', income - expense);
       }
     }),
     expense: kendo.data.DataSource.create({
       data:[],
       change: function(e) {
-        App.totalExpense = 0;
+        var expense = 0;
         this.data().forEach(function (d) {
-          App.totalExpense += parseInt(d.amount);
+          expense += parseInt(d.amount);
         });
-        App.totalMoney = App.totalIncome - App.totalExpense;
-        $('#home-income').text(kendo.toString(App.totalIncome, "c0"));
-        $('#home-expense').text(kendo.toString(App.totalExpense, "c0"));
-        $('#home-total').text(kendo.toString(App.totalMoney, "c0"));
+        var income = App.model.get('income');
+        App.model.set('expense', expense);
+        App.model.set('saldo', income - expense);
       }
     }),
     schedule: kendo.data.SchedulerDataSource.create({
@@ -45,6 +43,13 @@ define(["kendo"], function (kendo) {
         { field: "id", dir: "asc" }
       ]
     }),
+    defaultStores: [
+      {
+        id: 1,
+        name: 'total',
+        value: 0
+      }
+    ],
     defaultCategories: [
       {
         id: 1,
