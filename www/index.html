@@ -50,7 +50,7 @@
     <script type="text/x-kendo-template" id="history-item-template">
       <div class="row">
         <div style="color: grey; font-size: small;" class="left">#: category #</div>
-        <div class="money right #if (type === 'income') { #green# } else { #red# } #"># kendo.toString(amount, "c0") #</div>
+        <div class="money right #if (type === 'income') { #green# } else { #red# } #">#= kendo.toString(amount, "c0") #</div>
       </div>
       <div class="small"><b>Catatan :</b> #if (note) {##: note ##} else { #-# } #</div>
       <a href="\\#" data-role="button" data-icon="trash" class="delete km-primary"></a>
@@ -168,7 +168,6 @@
           </tr>
         </table>
         <a href="\\#" data-role="button" data-icon="trash" class="delete km-primary"></a>
-        # console.log(kendo.toString(amount, "c0")); #
       </script>
   </div>
 
@@ -237,7 +236,7 @@
     <script id="event-template" type="text/x-kendo-template">
       <div class="expense-template">
         <h2>#: title #</h2>
-        <b># kendo.toString(amount, "c0") #</b>
+        <b>#= kendo.toString(amount, "c0") #</b>
       </div>
     </script>
   </div>
