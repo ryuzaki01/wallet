@@ -48,9 +48,8 @@
     </ul>
 
     <script type="text/x-kendo-template" id="history-item-template">
-      <div style="color: grey; font-size: small;">#: category #</div>
       <div class="row">
-        <div class="left">#: name #</div>
+        <div style="color: grey; font-size: small;" class="left">#: category #</div>
         <div class="money right #if (type === 'income') { #green# } else { #red# } #">#: kendo.toString(amount, "c0") #</div>
       </div>
       <div class="small"><b>Catatan :</b> #if (note) {##: note ##} else { #-# } #</div>
@@ -70,68 +69,78 @@
       <div data-role="navbar">
         <a data-role="backbutton" data-align="left"></a>
         <span data-role="view-title"></span>
+        <a data-role="button" data-animated="true" data-icon="check-icon" data-click="App.views.tambah.save" data-align="right"></a>
       </div>
     </header>
 
     <div data-role="content">
       <form id="form-new-entry">
-        <ul data-role="listview">
+        <ul data-role="listview" data-style="inset">
           <li>
-            <ul data-role="listview" data-style="inset">
-              <li>
-                <label class="km-required km-label-above">Nama
-                  <input name="name" value="" type="text"/>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <span id="expensetype">Pemasukan</span>
-                  <input name="type" type="hidden" value="off">
-                  <input id="add-expensetype" name="type" type="checkbox" data-role="switch" data-change="App.views.tambah.switchExpenseType" />
-                </label>
-              </li>
-              <li>
-                <label class="km-required km-label-above">Nominal
-                  <input name="amount" type="number" value="" placeholder="0"/>
-                </label>
-              </li>
-              <li>
-                <label class="km-icon-label k-i-briefcase">
-                  <input id="add-category" name="category" />
-                </label>
-              </li>
-              <li>
-                <label class="km-icon-label k-i-calendar km-required">
-                  <input name="date" type="date" placeholder="Tentukan Tanggal"/>
-                </label>
-              </li>
-              <li>
-                <label class="km-icon-label k-i-clock km-required">
-                  <input name="time" type="time" placeholder="Tentukan Jam"/>
-                </label>
-              </li>
-              <li>
-                <fieldset>
-                  <legend>Catatan</legend>
-                  <textarea name="note" style="height: 100px;" placeholder="Tulis catatan anda.."></textarea>
-                </fieldset>
-              </li>
-              <li>
-                <fieldset>
-                  <legend></legend>
-                  <a data-role="button" data-animated="true" class="km-primary km-justified"
-                     data-click="App.views.tambah.save">Simpan</a>
-                </fieldset>
-              </li>
-            </ul>
+          <label class="km-label-above">
+            <input name="amount" type="number" class="currency" placeholder="Nominal" required/>
+          </label>
+          </li>
+          <li>
+            <fieldset>
+              <textarea name="note" style="height: 100px;" placeholder="Tulis catatan anda.."></textarea>
+            </fieldset>
+          </li>
+          <li>
+            <input name="type" type="hidden" required>
+            <input name="category" type="hidden" required>
+            <a id="category-pop" class="category-select" data-role="button" data-rel="popover" href="#popover-category">Kategori<br/><small>Pilih Kategori</small></a>
+          </li>
+          <li>
+            <label class="km-icon-label k-i-calendar km-required">
+              <input name="date" type="date" placeholder="Tentukan Tanggal"/>
+            </label>
+          </li>
+          <li>
+            <label class="km-icon-label k-i-clock km-required">
+              <input name="time" type="time" placeholder="Tentukan Jam"/>
+            </label>
           </li>
         </ul>
       </form>
     </div>
+
+    <div data-role="popover" id="popover-category" data-popup='{"height": "20em", "width": "20em"}'>
+      <div data-role="view" id="category-income" data-title="Income" data-layout="category-tabstrip">
+        <ul data-role="listview" id="category-list-income" data-style="inset"
+            data-source="App.data.category.income"
+            data-click="App.views.tambah.selectCategory"
+            data-template="category-item-template">
+        </ul>
+      </div>
+
+      <div data-role="view" id="category-expense" data-title="Expense" data-layout="category-tabstrip">
+        <ul data-role="listview" id="category-list-expense" data-style="inset"
+            data-source="App.data.category.expense"
+            data-click="App.views.tambah.selectCategory"
+            data-template="category-item-template">
+        </ul>
+      </div>
+
+      <div data-role="layout" data-id="category-tabstrip">
+        <header data-role="header">
+          <div data-role="tabstrip">
+            <a class="no-icon" href="#category-expense">Pengeluaran</a>
+            <a class="no-icon" href="#category-income">Pemasukan</a>
+          </div>
+        </header>
+
+        <p>Category</p>
+      </div>
+
+      <script type="text/x-kendo-template" id="category-item-template">
+        <label>#: name # <input name="category" data-type="#: type #" type="radio" value="#: name #"></label>
+      </script>
+    </div>
   </div>
 
-  <div data-role="view" data-title="Target" id="target" data-layout="drawer-layout" data-init="App.views.tambah.init"
-       data-show="App.views.tambah.show">
+  <div data-role="view" data-title="Target" id="target" data-layout="drawer-layout" data-init="App.views.target.init"
+       data-show="App.views.target.show">
         <ul data-role="listview" data-style="inset">
           <li style="padding: 0;">
             <div id="collapsible" data-role="collapsible">
@@ -141,12 +150,12 @@
                   <ul data-role="listview" data-style="inset">
                     <li>
                       <label class="km-required km-label-above">Nama
-                        <input name="name" value="" type="text"/>
+                        <input name="name" type="text"/>
                       </label>
                     </li>
                     <li>
                       <label class="km-required km-label-above">Nominal
-                        <input name="amount" value="" type="number"/>
+                        <input name="amount" class="currency" type="number" value="" step="1000" min="1000"/>
                       </label>
                     </li>
                     <li>
@@ -170,7 +179,7 @@
             <h2 class="text-center">List Target</h2>
           </li>
           <li style="padding: 0;">
-            <ul data-role="listview" class="target-list" data-style="inset" data-template="target-item-template" data-source="App.data.target">
+            <ul data-role="listview" id="target-list" class="target-list" data-style="inset" data-template="target-item-template" data-source="App.data.target">
 
             </ul>
           </li>
@@ -192,6 +201,7 @@
             <td class="text-center small">Start : #: date #</td>
           </tr>
         </table>
+        <a href="\\#" data-role="button" data-icon="trash" class="delete km-primary"></a>
       </script>
   </div>
 

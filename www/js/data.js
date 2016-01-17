@@ -26,7 +26,10 @@ define(["kendo"], function (kendo) {
     }),
     schedule: kendo.data.SchedulerDataSource.create({
       online: false,
-      data: []
+      data: [],
+      schema: {
+        model: { id: "ref" }
+      }
     }),
     target: kendo.data.DataSource.create({
       schema: {
@@ -36,13 +39,25 @@ define(["kendo"], function (kendo) {
       },
       data: []
     }),
-    category: kendo.data.DataSource.create({
-      data: [],
-      sort: [
-        { field: "target", dir: "desc" },
-        { field: "id", dir: "asc" }
-      ]
-    }),
+    category: {
+      income: kendo.data.DataSource.create({
+        data: [],
+        sort: [
+          { field: "target", dir: "desc" },
+          { field: "id", dir: "asc" }
+        ]
+      }),
+      expense: kendo.data.DataSource.create({
+        data: [],
+        sort: [
+          { field: "target", dir: "desc" },
+          { field: "id", dir: "asc" }
+        ],
+        schema: {
+          model: { id: "name" }
+        }
+      })
+    },
     defaultStores: [
       {
         id: 1,

@@ -129,7 +129,7 @@
     box-shadow: inset 0 .202rem .403rem 0 green;
 }
 
-#history-list .delete {
+.delete {
     display: none;
     position: absolute;
     top: 0;
@@ -155,4 +155,23 @@
     width: 100%;
     border-bottom: 1px solid #ddd;
     background: #eee;
+}
+
+.km-nova .km-check-icon:after {
+    content: "\e037";
+    font-size: 1.5em;
+    color: greenyellow;
+}
+
+.km-tabstrip .km-button.no-icon {
+
+}
+
+.km-tabstrip .km-button.no-icon .km-icon {
+    display: none;
+}
+
+.km-button.category-select {
+    border: none;
+    text-align: left;
 }

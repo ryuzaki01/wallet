@@ -21,7 +21,7 @@ define(["jquery", "kendo", "data"], function ($, kendo, data) {
           //tx.executeSql( 'DROP TABLE IF EXISTS target',[],DBHandler.nullHandler,DBHandler.errorHandler);
           //tx.executeSql( 'DROP TABLE IF EXISTS category',[],DBHandler.nullHandler,DBHandler.errorHandler);
           tx.executeSql('CREATE TABLE IF NOT EXISTS store(id INTEGER NOT NULL PRIMARY KEY, name TEXT, value INTEGER, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
-          tx.executeSql('CREATE TABLE IF NOT EXISTS expense(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, type TEXT, category TEXT, date DATE default CURRENT_DATE, time TIME default CURRENT_TIME, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
+          tx.executeSql('CREATE TABLE IF NOT EXISTS expense(id INTEGER NOT NULL PRIMARY KEY, amount INTEGER, type TEXT, category TEXT, date DATE default CURRENT_DATE, time TIME default CURRENT_TIME, note TEXT, UNIQUE (id) ON CONFLICT REPLACE)', [], DBHandler.nullHandler, DBHandler.errorHandler);
           tx.executeSql('CREATE TABLE IF NOT EXISTS target(id INTEGER NOT NULL PRIMARY KEY, name TEXT, amount INTEGER, amount_paid INTEGER, month INTEGER, date DATE default CURRENT_DATE, UNIQUE (id) ON CONFLICT REPLACE)', [], function (){
             var query = 'INSERT OR IGNORE INTO store (id, name, value) VALUES ';
             var data = [];

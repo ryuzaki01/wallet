@@ -3,8 +3,10 @@ define(["kendo"], function (kendo) {
     $historyList: $('#history-list'),
     type: 'income',
     init: function (e) {
-      // Nothing
       App.currentView = e.view;
+
+      kendo.bind($("#index"), App.model);
+
       App.views.index.$historyList.kendoTouch({
         filter: ">li",
         enableSwipe: true,
@@ -23,24 +25,25 @@ define(["kendo"], function (kendo) {
         db.transaction(function (tx) {
           tx.executeSql('DELETE FROM expense WHERE id = ?;', [model.id],
             function (transaction, result) {
+              var totalSaldo = App.model.get('totalSaldo');
+              switch (model.type) {
+                case 'income':
+                  App.model.set('totalSaldo', totalSaldo - (parseInt(model.amount) || 0));
+                  break;
+                case 'expense':
+                  App.model.set('totalSaldo', totalSaldo + (parseInt(model.amount) || 0));
+                  break;
+                default:
+                  break;
+              }
+
+              var scheduleModel = App.data.schedule.get(model.id);
+              App.data.schedule.remove(scheduleModel);
               App.data[App.views.index.type].remove(model);
+              App.updateStore();
             },
             DBHandler.errorHandler
           );
-
-          var totalSaldo = App.model.get('totalSaldo');
-          switch (model.type) {
-            case 'income':
-              App.model.set('totalSaldo', totalSaldo - (parseInt(model.amount) || 0));
-              break;
-            case 'expense':
-              App.model.set('totalSaldo', totalSaldo + (parseInt(model.amount) || 0));
-              break;
-            default:
-              break;
-          }
-
-          App.updateStore();
         }, DBHandler.errorHandler, function () {
           if (typeof cb === 'function') {
             cb.call();
@@ -65,7 +68,9 @@ define(["kendo"], function (kendo) {
     },
     refreshList: function () {
       var listView = App.views.index.$historyList.data('kendoMobileListView');
-      listView.setDataSource(App.data[App.views.index.type]);
+      if (listView) {
+        listView.setDataSource(App.data[App.views.index.type]);
+      }
     },
     changeList: function () {
       App.views.index.type = this.current().index() === 0 ? 'income' : 'expense';

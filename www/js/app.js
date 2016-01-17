@@ -24,6 +24,7 @@ define([
   return {
     interval: 0,
     currentView: false,
+    currentDate: new Date(),
     model: kendo.observable({
       totalSaldo: 0,
       totalSaldoText: function() {
@@ -61,8 +62,6 @@ define([
           App.currentView.scroller.scrollTo(0, - ($(this).offset().top  + App.currentView.scroller.scrollTop - 100));
         }
       });
-
-      kendo.bind($("#index"), App.model);
     },
 
     views: {
@@ -105,6 +104,7 @@ define([
               }
               App.data.income.data(data.income);
               App.data.expense.data(data.expense);
+              App.loadStoreData();
             }
           },
           DBHandler.errorHandler
@@ -117,13 +117,12 @@ define([
     },
 
     loadDatabase: function (cb) {
-      var date = new Date();
-      var endMonthDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+      var endMonthDate = new Date(App.currentDate.getFullYear(), App.currentDate.getMonth() + 1, 0);
       db.transaction(function (transaction) {
         transaction.executeSql('SELECT * FROM expense WHERE date BETWEEN ? AND ?;',
           [
-            date.getFullYear() + '-' + (date.getMonth() + 1) + '-1',
-            date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + endMonthDate.getDate()
+            App.currentDate.getFullYear() + '-' + (App.currentDate.getMonth() + 1) + '-1',
+            App.currentDate.getFullYear() + '-' + (App.currentDate.getMonth() + 1) + '-' + endMonthDate.getDate()
           ],
           function (transaction, result) {
             if (result != null && result.rows != null) {
@@ -135,8 +134,9 @@ define([
                 App.data.schedule.add({
                   start: start,
                   end: end,
-                  title: row.name,
+                  title: row.note,
                   amount: row.amount,
+                  ref: row.id,
                   type: row.type
                 });
               }
@@ -204,11 +204,19 @@ define([
 
     prevDay: function () {
       App.interval -= 1;
+      App.currentDate.setDate(App.currentDate.getDate() - 1);
+      var $form = $('#form-new-entry');
+      $form.find('[name="date"]').val(kendo.toString(App.currentDate, 'yyyy-MM-dd'));
+      $form.find('[name="time"]').val(kendo.toString(App.currentDate, 'HH:mm:ss'));
       App.loadDayData();
     },
 
     nextDay: function () {
       App.interval += 1;
+      App.currentDate.setDate(App.currentDate.getDate() + 1);
+      var $form = $('#form-new-entry');
+      $form.find('[name="date"]').val(kendo.toString(App.currentDate, 'yyyy-MM-dd'));
+      $form.find('[name="time"]').val(kendo.toString(App.currentDate, 'HH:mm:ss'));
       App.loadDayData();
     },
 
