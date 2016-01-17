@@ -142,50 +142,14 @@
   </div>
 
   <div data-role="view" data-title="Target" id="target" data-layout="drawer-layout" data-init="App.views.target.init"
-       data-show="App.views.target.show">
-        <ul data-role="listview" data-style="inset">
-          <li style="padding: 0;">
-            <div id="collapsible" data-role="collapsible">
-              <h2>Buat Target Baru</h2>
-              <p>
-                <form id="target-form">
-                  <ul data-role="listview" data-style="inset">
-                    <li>
-                      <label class="km-required km-label-above">Nama
-                        <input name="name" type="text"/>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="km-required km-label-above">Nominal
-                        <input name="amount" class="currency" type="number" value="" step="1000" min="1000"/>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="km-required km-label-above">Lama (Bulan)
-                        <input type="number" name="month" value="1">
-                      </label>
-                    </li>
-                    <li>
-                      <fieldset>
-                        <legend></legend>
-                        <a data-role="button" data-animated="true" class="km-primary km-justified"
-                           data-click="App.views.target.save">Simpan</a>
-                      </fieldset>
-                    </li>
-                  </ul>
-                </form>
-              </p>
-            </div>
-          </li>
-          <li style="padding: 0;">
-            <h2 class="text-center">List Target</h2>
-          </li>
-          <li style="padding: 0;">
-            <ul data-role="listview" id="target-list" class="target-list" data-style="inset" data-template="target-item-template" data-source="App.data.target">
+       data-show="App.views.target.show" data-hide="App.views.target.hide">
+      <ul data-role="listview" id="target-list" class="target-list" data-style="inset" data-template="target-item-template" data-source="App.data.target">
 
-            </ul>
-          </li>
-        </ul>
+      </ul>
+
+      <div class="empty-overlay">
+        <span>Kosong</span>
+      </div>
 
       <script type="text/x-kendo-template" id="target-item-template">
         <table style="width: 100%; table-layout: auto">
@@ -206,6 +170,47 @@
         <a href="\\#" data-role="button" data-icon="trash" class="delete km-primary"></a>
         # console.log(kendo.toString(amount, "c0")); #
       </script>
+  </div>
+
+
+
+  <div class="fixed-action-btn active" id="action-target-add">
+    <a class="btn-floating btn-large" href="#tambah-target">
+      <span class="km-icon km-add km-notext" style="display: inline-block;"></span>
+    </a>
+  </div>
+
+  <div data-role="view" data-title="Target" id="tambah-target" data-init="App.views.tambahTarget.init"
+       data-show="App.views.tambahTarget.show">
+    <header data-role="header">
+      <div data-role="navbar">
+        <a data-role="backbutton" data-align="left"></a>
+        <span data-role="view-title"></span>
+        <a data-role="button" data-animated="true" data-icon="check-icon" data-click="App.views.tambahTarget.save" data-align="right"></a>
+      </div>
+    </header>
+
+    <div data-role="content">
+      <form id="target-form">
+        <ul data-role="listview" data-style="inset">
+          <li>
+            <label class="km-required km-label-above">Nama
+              <input name="name" type="text"/>
+            </label>
+          </li>
+          <li>
+            <label class="km-required km-label-above">Nominal
+              <input name="amount" class="currency" type="number" value="" step="1000" min="1000"/>
+            </label>
+          </li>
+          <li>
+            <label class="km-required km-label-above">Lama (Bulan)
+              <input type="number" name="month" value="1">
+            </label>
+          </li>
+        </ul>
+      </form>
+    </div>
   </div>
 
   <div data-role="view" data-title="Kalender" id="kalender" data-layout="drawer-layout"
@@ -246,7 +251,8 @@
     </header>
   </div>
 
-  <script type="text/javascript" src="js/plugins/Toast.js"></script>
+  <span id="notification"></span>
+
   <script type="text/javascript" src="js/libs/require.js" data-main="js/main"></script>
 </body>
 </html>

@@ -37,7 +37,15 @@ define(["kendo"], function (kendo) {
           id: "id"
         }
       },
-      data: []
+      data: [],
+      change: function () {
+        var $emptyOverlay = $('#target .empty-overlay');
+        if (this.data().length > 0) {
+          $emptyOverlay.hide();
+        } else {
+          $emptyOverlay.show();
+        }
+      }
     }),
     category: {
       income: kendo.data.DataSource.create({

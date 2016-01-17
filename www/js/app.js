@@ -7,6 +7,7 @@ define([
   'views/index',
   'views/tambah',
   'views/target',
+  'views/tambahTarget',
   'views/kalender',
   'data',
   'serializeObject'
@@ -17,6 +18,7 @@ define([
   indexView,
   tambahView,
   targetView,
+  tambahTargetView,
   kalenderView,
   data
 ) {
@@ -25,6 +27,9 @@ define([
     interval: 0,
     currentView: false,
     currentDate: new Date(),
+    notification: $("#notification").kendoNotification({
+      autoHideAfter: 2000
+    }).data("kendoNotification"),
     model: kendo.observable({
       totalSaldo: 0,
       totalSaldoText: function() {
@@ -68,6 +73,7 @@ define([
       index: indexView,
       tambah: tambahView,
       target : targetView,
+      tambahTarget: tambahTargetView,
       kalender: kalenderView
     },
 
@@ -228,7 +234,7 @@ define([
       } else {
         var currentTime = new Date();
         if ((currentTime - lastPressExit) > 5000) {
-          Toast.shortshow('Press back again to exit.');
+          App.notification.show('Press back again to exit.');
           lastPressExit = currentTime;
         } else {
           navigator.app.exitApp();

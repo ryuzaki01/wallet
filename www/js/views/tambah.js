@@ -53,7 +53,7 @@ define(["kendo"], function (kendo) {
     save: function (e) {
       var data = App.views.tambah.$form.serializeObject();
       if (!data.type || !data.category || !data.amount) {
-        window.plugins.toast.showShortBottom('Harap isi nominal dan pilih kategori');
+        App.notification.error('Harap isi nominal dan pilih kategori');
         return false;
       }
       var dateNow = new Date();

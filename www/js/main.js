@@ -72,12 +72,6 @@ define([
           confirm(message);
         }
       };
-
-      window.plugins.toast = {
-        showShortBottom: function(msg){
-          alert(msg);
-        }
-      };
       // On desktop don't have to wait for anything
       onDeviceReady(true);
     }

@@ -1,6 +1,5 @@
 define(["kendo"], function (kendo) {
   return {
-    $form: $('#target-form'),
     $targetList: $('#target-list'),
     init: function (e) {
       App.currentView = e.view;
@@ -57,54 +56,13 @@ define(["kendo"], function (kendo) {
       button.expand().duration(30).play();
     },
     show: function () {
-      // Nothing
+      $('#action-target-add').show();
     },
     hide: function () {
+      $('#action-target-add').hide();
       if (App.currentView.scroller) {
         App.currentView.scroller.reset();
       }
-      // Nothing
-    },
-    save: function (){
-      var data = App.views.target.$form.serializeObject();
-      if (!data.name || !data.amount) {
-        window.plugins.toast.showShortBottom('Harap isi nominal dan tulis nama target');
-        return false;
-      }
-      var dateNow = new Date();
-      var formattedDate = kendo.toString(dateNow, 'yyyy-MM-dd');
-      db.transaction(function (tx) {
-        tx.executeSql(
-          'INSERT INTO target (name, amount, amount_paid, month, date) VALUES (?, ?, ?, ?, ?)',
-          [
-            data.name,
-            data.amount || 0,
-            0,
-            data.month,
-            formattedDate
-          ], function (tx, result) {
-            var target = result.insertId;
-            App.data.category.expense.add({
-              name: data.name,
-              type: 'expense',
-              target: target
-            });
-            tx.executeSql(
-              'INSERT INTO category (name, type, target) VALUES (?, ?, ?)',
-              [
-                data.name,
-                'expense',
-                target
-              ], function () {
-                data.id = target;
-                data.amount_paid = 0;
-                data.date = formattedDate;
-                App.data.target.add(data);
-                App.views.target.$form[0].reset();
-                window.plugins.toast.showShortBottom('Target telah ditambahkan');
-              }, DBHandler.errorHandler);
-          }, DBHandler.errorHandler);
-      }, DBHandler.errorHandler, DBHandler.nullHandler);
     }
   }
 });
