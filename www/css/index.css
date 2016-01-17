@@ -224,6 +224,7 @@
 .km-scroll-wrapper {
   height: calc(100% - 45px); /* subtract header height */
 }
+
 .km-scroll-container {
   min-height: 100%;
 }

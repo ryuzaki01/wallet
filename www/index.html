@@ -13,7 +13,7 @@
 </head>
 <body id="body">
   <div data-role="view" data-title="Home" id="index" data-layout="drawer-layout" data-show="App.views.index.show"
-       data-init="App.views.index.init" data-hide="App.views.index.hide">
+       data-init="App.views.index.init" data-hide="App.views.index.hide" data-scroller='{"elastic": false}'>
 
     <div>
       <h1 data-bind="text: totalSaldoText" class="text-center">Rp0</h1>
@@ -33,17 +33,19 @@
       <li><b><span data-bind="text: saldoText" class="right">Rp 0</span></b></li>
     </ul>
 
-    <ul data-role="listview" style="margin-bottom: 150px;" data-style="inset">
-      <li>
+    <ul data-role="listview" style="margin-bottom: 100px;" data-style="inset">
+      <li style="padding: 0">
         <ul data-role="buttongroup" data-index="0" data-select="App.views.index.changeList" data-style="inset">
           <li>Pemasukan</li>
           <li>Pengeluaran</li>
         </ul>
       </li>
       <li style="padding: 0;">
-        <ul data-role="listview" id="history-list" data-style="inset" data-template="history-item-template" class="history-list">
+        <div data-role="scroller" style="width: 100%; height: 200px" data-elastic="false">
+          <ul data-role="listview" id="history-list" data-style="inset" data-template="history-item-template" class="history-list">
 
-        </ul>
+          </ul>
+        </div>
       </li>
     </ul>
 
