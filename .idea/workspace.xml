@@ -2,70 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c39f7807-6a68-4956-b8d0-87f590864361" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/platforms/android/src/nl/xservices/plugins/Toast.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/js/plugins/Toast.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/plugin.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/screenshots/screenshot-android-toast.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/screenshots/screenshot-ios-toast.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/screenshots/screenshot-wp8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/.cproject" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/libToast.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/public/json_reader.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/public/json_value.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/public/json_writer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/public/plugin.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/public/tokenizer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/src/Logger.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/src/toast_js.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/device/src/toast_ndk.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/autolink.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/config.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/features.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/forwards.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/json.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/reader.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/value.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json/writer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json_batchallocator.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json_internalarray.inl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json_internalmap.inl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json_reader.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json_value.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json_valueiterator.inl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/json_writer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/plugin.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/plugin.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/tokenizer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/public/tokenizer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/libToast.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/public/json_reader.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/public/json_value.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/public/json_writer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/public/plugin.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/public/tokenizer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/src/Logger.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/src/toast_js.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/simulator/src/toast_ndk.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/src/Logger.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/src/Logger.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/src/toast_js.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/src/toast_js.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/src/toast_ndk.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/blackberry10/native/src/toast_ndk.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/ios/Toast+UIView.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/ios/Toast+UIView.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/ios/Toast.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/ios/Toast.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/wp8/Toast.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/test/tests.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/src/android/nl/xservices/plugins/Toast.java" afterPath="$PROJECT_DIR$/platforms/android/src/nl/xservices/plugins/Toast.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/cordova-plugin-x-toast/www/Toast.js" afterPath="$PROJECT_DIR$/www/js/plugins/Toast.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
     </list>
     <ignored path="dompet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,8 +75,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.031446543">
-              <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.6333333">
+              <caret line="93" column="12" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -355,6 +292,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dompet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dompet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dompet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platforms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xservices" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -900,7 +871,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/android/src/nl/xservices/plugins/Toast.java">
+    <entry file="file://$PROJECT_DIR$/www/js/plugins/Toast.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -908,7 +879,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/plugins/Toast.js">
+    <entry file="file://$PROJECT_DIR$/platforms/android/src/nl/xservices/plugins/Toast.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -935,8 +906,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031446543">
-          <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.6333333">
+          <caret line="93" column="12" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="12" />
           <folding />
         </state>
       </provider>
