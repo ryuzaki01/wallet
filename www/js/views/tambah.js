@@ -31,7 +31,8 @@ define(["kendo"], function (kendo) {
       if (App.currentView.scroller) {
         App.currentView.scroller.reset();
       }
-      App.views.tambah.$form[0].reset();
+      App.views.tambah.$form[0].amount.value = '';
+      App.views.tambah.$form[0].note.value = '';
     },
 
     selectCategory: function (e) {
@@ -52,6 +53,8 @@ define(["kendo"], function (kendo) {
     save: function (e) {
       var data = App.views.tambah.$form.serializeObject();
       var dateNow = new Date();
+      var startDate = data.date || kendo.toString(dateNow, 'yyyy-MM-d');
+      var startTime = data.time || kendo.toString(dateNow, 'HH:mm:ss');
       db.transaction(function (tx) {
         tx.executeSql(
           'INSERT INTO expense (type, category, amount, date, time, note) VALUES (?, ?, ?, ?, ?, ?)',
@@ -59,8 +62,8 @@ define(["kendo"], function (kendo) {
             data.type,
             data.category,
             data.amount || 0,
-            data.date || dateNow.getFullYear() + '-' + (dateNow.getMonth() + 1) + '-' + dateNow.getDate(),
-            data.time || dateNow.getHours() + ':' + (dateNow.getMinutes() + 1) + ':' + dateNow.getSeconds(),
+            startDate,
+            startTime,
             data.note || ''
           ], function () {
             var totalSaldo = App.model.get('totalSaldo');
@@ -99,10 +102,13 @@ define(["kendo"], function (kendo) {
                         });
 
                         App.data[data.type].add(data);
-                        var end = new Date(dateNow.setHours(dateNow.getHours() + 1));
+
+                        var start = new Date(startDate);
+                        var end = start;
+                        end.setHours(end.getHours() + 1);
 
                         App.data.schedule.add({
-                          start: dateNow,
+                          start: start,
                           end: end,
                           title: data.note,
                           amount: data.amount,

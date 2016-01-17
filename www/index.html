@@ -87,9 +87,11 @@
             </fieldset>
           </li>
           <li>
-            <input name="type" type="hidden" required>
-            <input name="category" type="hidden" required>
-            <a id="category-pop" class="category-select" data-role="button" data-rel="popover" href="#popover-category">Kategori<br/><small>Pilih Kategori</small></a>
+            <fieldset>
+              <input name="type" type="hidden" required>
+              <input name="category" type="hidden" required>
+              <a id="category-pop" class="btn-full category-select" data-role="button" data-rel="popover" href="#popover-category">Kategori<br/><small>Pilih Kategori</small></a>
+            </fieldset>
           </li>
           <li>
             <label class="km-icon-label k-i-calendar km-required">
@@ -125,8 +127,8 @@
       <div data-role="layout" data-id="category-tabstrip">
         <header data-role="header">
           <div data-role="tabstrip">
-            <a class="no-icon" href="#category-expense">Pengeluaran</a>
-            <a class="no-icon" href="#category-income">Pemasukan</a>
+            <a class="no-icon category-income" href="#category-income">Pemasukan</a>
+            <a class="no-icon category-expense" href="#category-expense">Pengeluaran</a>
           </div>
         </header>
 

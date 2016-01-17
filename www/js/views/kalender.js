@@ -22,10 +22,9 @@ define(["kendo"], function (kendo) {
 
       $scheduleElement.kendoScheduler({
         allDaySlot: false,
-        start: new Date(date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' 6:00 AM'),
-        end: new Date(date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate() + ' 5:00 AM'),
+        start: new Date(date.getFullYear() + '/' + date.getMonth() + '/1' + ' 6:00 AM'),
+        end: new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/0 5:00 AM'),
         height: 560,
-        majorTick: 120,
         mobile: true,
         views: [
           "agenda",

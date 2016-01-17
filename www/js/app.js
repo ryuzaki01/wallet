@@ -82,7 +82,7 @@ define([
       var date = new Date();
       if (App.interval !== 0) {
         date.setDate(date.getDate() + App.interval);
-        $homeDay.text(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
+        $homeDay.text(kendo.toString(date, 'd MMM yyyy'));
       } else {
         $homeDay.text('Hari Ini');
       }
@@ -93,7 +93,7 @@ define([
         };
         transaction.executeSql('SELECT * FROM expense WHERE date = ?;',
           [
-            date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+            kendo.toString(date, 'yyyy-MM-dd')
           ],
           function (transaction, result) {
             if (result != null && result.rows != null) {
@@ -117,19 +117,22 @@ define([
     },
 
     loadDatabase: function (cb) {
-      var endMonthDate = new Date(App.currentDate.getFullYear(), App.currentDate.getMonth() + 1, 0);
+      var date = new Date();
+      var startMonthDate = new Date(date.getFullYear(), date.getMonth(), 1);
+      var endMonthDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
       db.transaction(function (transaction) {
         transaction.executeSql('SELECT * FROM expense WHERE date BETWEEN ? AND ?;',
           [
-            App.currentDate.getFullYear() + '-' + (App.currentDate.getMonth() + 1) + '-1',
-            App.currentDate.getFullYear() + '-' + (App.currentDate.getMonth() + 1) + '-' + endMonthDate.getDate()
+            kendo.toString(startMonthDate, 'yyyy-MM-dd'),
+            kendo.toString(endMonthDate, 'yyyy-MM-dd')
           ],
           function (transaction, result) {
             if (result != null && result.rows != null) {
               for (var i = 0; i < result.rows.length; i++) {
                 var row = result.rows.item(i);
                 var start = new Date(row.date + ' ' + row.time);
-                var end = new Date(start.setHours(start.getHours() + 1));
+                var end = start;
+                end.setHours(end.getHours() + 1);
 
                 App.data.schedule.add({
                   start: start,
@@ -205,18 +208,16 @@ define([
     prevDay: function () {
       App.interval -= 1;
       App.currentDate.setDate(App.currentDate.getDate() - 1);
-      var $form = $('#form-new-entry');
-      $form.find('[name="date"]').val(kendo.toString(App.currentDate, 'yyyy-MM-dd'));
-      $form.find('[name="time"]').val(kendo.toString(App.currentDate, 'HH:mm:ss'));
+      App.views.tambah.$form.find('[name="date"]').val(kendo.toString(App.currentDate, 'yyyy-MM-dd'));
+      App.views.tambah.$form.find('[name="time"]').val(kendo.toString(App.currentDate, 'HH:mm:ss'));
       App.loadDayData();
     },
 
     nextDay: function () {
       App.interval += 1;
       App.currentDate.setDate(App.currentDate.getDate() + 1);
-      var $form = $('#form-new-entry');
-      $form.find('[name="date"]').val(kendo.toString(App.currentDate, 'yyyy-MM-dd'));
-      $form.find('[name="time"]').val(kendo.toString(App.currentDate, 'HH:mm:ss'));
+      App.views.tambah.$form.find('[name="date"]').val(kendo.toString(App.currentDate, 'yyyy-MM-dd'));
+      App.views.tambah.$form.find('[name="time"]').val(kendo.toString(App.currentDate, 'HH:mm:ss'));
       App.loadDayData();
     },
 
