@@ -2,68 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c39f7807-6a68-4956-b8d0-87f590864361" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/plugin.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/android/IonicKeyboard.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/.cproject" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/libKeyboard.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/public/json_reader.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/public/json_value.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/public/json_writer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/public/plugin.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/public/tokenizer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/src/CallKeyboard.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/src/Logger.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/src/keyboard_js.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/device/src/keyboard_ndk.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/autolink.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/config.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/features.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/forwards.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/json.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/reader.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/value.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json/writer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json_batchallocator.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json_internalarray.inl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json_internalmap.inl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json_reader.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json_value.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json_valueiterator.inl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/json_writer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/plugin.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/plugin.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/tokenizer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/public/tokenizer.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/libKeyboard.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/public/json_reader.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/public/json_value.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/public/json_writer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/public/plugin.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/public/tokenizer.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/src/CallKeyboard.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/src/Logger.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/src/keyboard_js.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/src/Logger.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/src/Logger.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/src/keyboard_js.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/src/keyboard_js.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/src/keyboard_ndk.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/src/keyboard_ndk.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/ios/IonicKeyboard.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/ios/IonicKeyboard.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/ios/UIWebViewExtension.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/ios/UIWebViewExtension.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/windows/KeyboardProxy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/www/android/keyboard.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/www/ios/keyboard.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/com.ionic.keyboard/src/blackberry10/native/simulator/src/keyboard_ndk.o" afterPath="$PROJECT_DIR$/www/js/plugins/Toast.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/main.js" afterPath="$PROJECT_DIR$/www/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/views/tambah.js" afterPath="$PROJECT_DIR$/www/js/views/tambah.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/views/target.js" afterPath="$PROJECT_DIR$/www/js/views/target.js" />
@@ -111,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/www/js/plugins/Toast.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="31" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="31" />
+              <caret line="33" column="18" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -120,8 +59,8 @@
       <file leaf-file-name="target.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/views/target.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5555553">
-              <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+            <state vertical-scroll-proportion="-8.333333">
+              <caret line="98" column="33" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -150,8 +89,8 @@
       <file leaf-file-name="tambah.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/views/tambah.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3333333">
-              <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+            <state vertical-scroll-proportion="-30.555555">
+              <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -161,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="75" selection-start-line="77" selection-start-column="75" selection-end-line="77" selection-end-column="75" />
+              <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -180,8 +119,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6855346">
-              <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.591195">
+              <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -215,11 +154,11 @@
         <option value="$PROJECT_DIR$/www/js/db.js" />
         <option value="$PROJECT_DIR$/www/js/views/kalender.js" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/js/plugins/Toast.js" />
-        <option value="$PROJECT_DIR$/www/js/views/tambah.js" />
+        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/js/views/target.js" />
+        <option value="$PROJECT_DIR$/www/js/views/tambah.js" />
         <option value="$PROJECT_DIR$/www/js/main.js" />
       </list>
     </option>
@@ -912,14 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="75" selection-start-line="77" selection-start-column="75" selection-end-line="77" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.329114">
@@ -937,34 +868,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/plugins/Toast.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="31" />
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/tambah.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3333333">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+        <state vertical-scroll-proportion="-30.555555">
+          <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/views/target.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5555553">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+        <state vertical-scroll-proportion="-8.333333">
+          <caret line="98" column="33" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6855346">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.591195">
+          <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
           <folding />
         </state>
       </provider>

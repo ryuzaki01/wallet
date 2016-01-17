@@ -24,6 +24,7 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="adjustResize" />
+    <gap:plugin name="nl.x-services.plugins.toast" />
     <!--
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
@@ -74,8 +75,8 @@
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     -->
     <access origin="*" />
-    <plugin name="cordova-plugin-whitelist" version="1" />
     <plugin name="nl.x-services.plugins.toast" spec="2.0.2" source="pgb" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

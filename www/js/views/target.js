@@ -68,7 +68,7 @@ define(["kendo"], function (kendo) {
     save: function (){
       var data = App.views.target.$form.serializeObject();
       if (!data.name || !data.amount) {
-        Toast.showShortBottom('Harap isi nominal dan tulis nama target');
+        window.plugins.toast.showShortBottom('Harap isi nominal dan tulis nama target');
         return false;
       }
       var dateNow = new Date();
@@ -101,7 +101,7 @@ define(["kendo"], function (kendo) {
                 data.date = formattedDate;
                 App.data.target.add(data);
                 App.views.target.$form[0].reset();
-                Toast.showShortBottom('Target telah ditambahkan');
+                window.plugins.toast.showShortBottom('Target telah ditambahkan');
               }, DBHandler.errorHandler);
           }, DBHandler.errorHandler);
       }, DBHandler.errorHandler, DBHandler.nullHandler);

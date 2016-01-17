@@ -73,7 +73,7 @@ define([
         }
       };
 
-      window.Toast = {
+      window.plugins.toast = {
         showShortBottom: function(msg){
           alert(msg);
         }
