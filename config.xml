@@ -44,7 +44,6 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     -->
-    <gap:plugin name="com.ionic.keyboard" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
@@ -76,6 +75,7 @@
     -->
     <access origin="*" />
     <plugin name="cordova-plugin-whitelist" version="1" />
+    <plugin name="nl.x-services.plugins.toast" spec="2.0.2" source="pgb" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

@@ -52,8 +52,12 @@ define(["kendo"], function (kendo) {
 
     save: function (e) {
       var data = App.views.tambah.$form.serializeObject();
+      if (!data.type || !data.category || !data.amount) {
+        Toast.showShortBottom('Harap isi nominal dan pilih kategori');
+        return false;
+      }
       var dateNow = new Date();
-      var startDate = data.date || kendo.toString(dateNow, 'yyyy-MM-d');
+      var startDate = data.date || kendo.toString(dateNow, 'yyyy-MM-dd');
       var startTime = data.time || kendo.toString(dateNow, 'HH:mm:ss');
       db.transaction(function (tx) {
         tx.executeSql(

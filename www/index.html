@@ -50,7 +50,7 @@
     <script type="text/x-kendo-template" id="history-item-template">
       <div class="row">
         <div style="color: grey; font-size: small;" class="left">#: category #</div>
-        <div class="money right #if (type === 'income') { #green# } else { #red# } #">#: kendo.toString(amount, "c0") #</div>
+        <div class="money right #if (type === 'income') { #green# } else { #red# } #"># kendo.toString(amount, "c0") #</div>
       </div>
       <div class="small"><b>Catatan :</b> #if (note) {##: note ##} else { #-# } #</div>
       <a href="\\#" data-role="button" data-icon="trash" class="delete km-primary"></a>
@@ -193,9 +193,9 @@
             <td colspan="3">#: name #</td>
           </tr>
           <tr>
-            <td class="money green text-right" style="width: 50%;">#: kendo.toString(amount_paid, "c0") #</td>
+            <td class="money green text-right" style="width: 50%;">#= kendo.toString(amount_paid, "c0") #</td>
             <td width="10px">/</td>
-            <td class="money red text-left" style="width: 50%;">#: kendo.toString(amount, "c0") #</td>
+            <td class="money red text-left" style="width: 50%;">#= kendo.toString(amount, "c0") #</td>
           </tr>
           <tr>
             <td class="text-center small">#:  month # Bulan</td>
@@ -204,6 +204,7 @@
           </tr>
         </table>
         <a href="\\#" data-role="button" data-icon="trash" class="delete km-primary"></a>
+        # console.log(kendo.toString(amount, "c0")); #
       </script>
   </div>
 
@@ -231,7 +232,7 @@
     <script id="event-template" type="text/x-kendo-template">
       <div class="expense-template">
         <h2>#: title #</h2>
-        <b>#: kendo.toString(amount, "c0") #</b>
+        <b># kendo.toString(amount, "c0") #</b>
       </div>
     </script>
   </div>
@@ -245,6 +246,7 @@
     </header>
   </div>
 
+  <script type="text/javascript" src="js/plugins/Toast.js"></script>
   <script type="text/javascript" src="js/libs/require.js" data-main="js/main"></script>
 </body>
 </html>

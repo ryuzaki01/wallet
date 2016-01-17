@@ -67,8 +67,12 @@ define(["kendo"], function (kendo) {
     },
     save: function (){
       var data = App.views.target.$form.serializeObject();
+      if (!data.name || !data.amount) {
+        Toast.showShortBottom('Harap isi nominal dan tulis nama target');
+        return false;
+      }
       var dateNow = new Date();
-      var formattedDate = dateNow.getFullYear() + '-' + (dateNow.getMonth() + 1) + '-' + dateNow.getDate();
+      var formattedDate = kendo.toString(dateNow, 'yyyy-MM-dd');
       db.transaction(function (tx) {
         tx.executeSql(
           'INSERT INTO target (name, amount, amount_paid, month, date) VALUES (?, ?, ?, ?, ?)',
@@ -97,7 +101,7 @@ define(["kendo"], function (kendo) {
                 data.date = formattedDate;
                 App.data.target.add(data);
                 App.views.target.$form[0].reset();
-                alert('Target telah ditambahkan');
+                Toast.showShortBottom('Target telah ditambahkan');
               }, DBHandler.errorHandler);
           }, DBHandler.errorHandler);
       }, DBHandler.errorHandler, DBHandler.nullHandler);

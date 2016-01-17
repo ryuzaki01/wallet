@@ -74,10 +74,7 @@ define([
       };
 
       window.Toast = {
-        shortshow: function(msg, duration, successCallback, failureCallback){
-          alert(msg);
-        },
-        longshow: function(msg, duration, successCallback, failureCallback){
+        showShortBottom: function(msg){
           alert(msg);
         }
       };
