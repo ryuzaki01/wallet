@@ -80,7 +80,8 @@
         <ul data-role="listview" data-style="inset">
           <li>
           <label class="km-label-above">
-            <input name="amount" type="number" class="currency" placeholder="Nominal" required/>
+            <input class="currency" type="text" placeholder="Nominal"/>
+            <input name="amount" class="currency-input" type="hidden"/>
           </label>
           </li>
           <li>
@@ -97,7 +98,7 @@
           </li>
           <li>
             <label class="km-icon-label k-i-calendar km-required">
-              <input name="date" type="date" placeholder="Tentukan Tanggal"/>
+              <input name="date" type="date" min="2010-01-01" max="2018-01-01" placeholder="Tentukan Tanggal"/>
             </label>
           </li>
           <li>
@@ -182,7 +183,7 @@
   </div>
 
   <div data-role="view" data-title="Target" id="tambah-target" data-init="App.views.tambahTarget.init"
-       data-show="App.views.tambahTarget.show">
+       data-show="App.views.tambahTarget.show" data-hide="App.views.tambahTarget.hide">
     <header data-role="header">
       <div data-role="navbar">
         <a data-role="backbutton" data-align="left"></a>
@@ -201,7 +202,8 @@
           </li>
           <li>
             <label class="km-required km-label-above">Nominal
-              <input name="amount" class="currency" type="number" value="" step="1000" min="1000"/>
+              <input class="currency" type="text" />
+              <input name="amount" class="currency-input" type="hidden"/>
             </label>
           </li>
           <li>

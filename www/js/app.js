@@ -67,6 +67,10 @@ define([
           App.currentView.scroller.scrollTo(0, - ($(this).offset().top  + App.currentView.scroller.scrollTop - 100));
         }
       });
+
+      $.each($('.currency'), function () {
+        App.maskMoney($(this), $(this).siblings('.currency-input'));
+      })
     },
 
     views: {
@@ -208,6 +212,19 @@ define([
     updateStore: function () {
       db.transaction(function (tx) {
         tx.executeSql('UPDATE store SET value = ? WHERE id = ?', [App.model.get('totalSaldo'), 1], DBHandler.nullHandler, DBHandler.errorHandler);
+      });
+    },
+
+    maskMoney: function ($mask, $input) {
+      $mask.on('input paste', function () {
+        var selectStart = $mask[0].selectionStart;
+        var selectEnd = $mask[0].selectionEnd;
+        $mask.val(parseInt($mask.val().replace(/\./g, ""))
+          .toFixed(0)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        $mask[0].setSelectionRange(selectStart, selectEnd);
+        $input.val($mask.val().replace(/\./g, ""));
       });
     },
 

@@ -11,7 +11,10 @@ define(["kendo"], function (kendo) {
       if (App.currentView.scroller) {
         App.currentView.scroller.reset();
       }
-      // Nothing
+      App.views.tambahTarget.$form.find('.currency').val('');
+      App.views.tambahTarget.$form[0].amount.value = '';
+      App.views.tambahTarget.$form[0].name.value = '';
+      App.views.tambahTarget.$form[0].month.value = 1;
     },
     save: function (){
       var data = App.views.tambahTarget.$form.serializeObject();

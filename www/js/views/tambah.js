@@ -31,6 +31,7 @@ define(["kendo"], function (kendo) {
       if (App.currentView.scroller) {
         App.currentView.scroller.reset();
       }
+      App.views.tambah.$form.find('.currency').val('');
       App.views.tambah.$form[0].amount.value = '';
       App.views.tambah.$form[0].note.value = '';
     },
