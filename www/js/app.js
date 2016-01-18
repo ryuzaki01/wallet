@@ -216,15 +216,24 @@ define([
     },
 
     maskMoney: function ($mask, $input) {
-      $mask.on('input paste', function () {
-        var selectStart = $mask[0].selectionStart;
-        var selectEnd = $mask[0].selectionEnd;
-        $mask.val(parseInt($mask.val().replace(/\./g, ""))
-          .toFixed(0)
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        $mask[0].setSelectionRange(selectStart, selectEnd);
-        $input.val($mask.val().replace(/\./g, ""));
+      $mask.on('keyup paste', function (e) {
+        var charValue = String.fromCharCode(e.keyCode)
+          , valid = /^[0-9]+$/.test(charValue);
+        var reverse = e.keyCode === 8 ? -1 : 0;
+        if(valid || e.keyCode == 8) {
+          var selectStart = $mask[0].selectionStart;
+          var selectEnd = $mask[0].selectionEnd;
+          var val = parseInt($mask.val().replace(/\./g, "")) || 0;
+          var maskedVal = val.toFixed(0)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          $mask.val(maskedVal);
+
+          var selectionVal = maskedVal.substr(0, selectEnd + reverse);
+          var dotCount = (selectionVal.split('.').length - 1);
+          $mask[0].setSelectionRange(selectStart + dotCount + reverse, selectEnd + dotCount + reverse);
+          $input.val($mask.val().replace(/\./g, ""));
+        }
       });
     },
 
