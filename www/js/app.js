@@ -59,6 +59,7 @@ define([
           App.loadDayData(App.loadDatabase);
           App.loadTargetData();
           App.loadStoreData();
+          kendo.cultures["id-ID"].numberFormat.currency.pattern[0] = "-$n";
         }
       });
 
